@@ -8,10 +8,8 @@ class AuthLogin {
         expect(response.status).to.be.oneOf([200, 304], 'Successful HTTP response');
       } else {
         cy.log('Warning: The response object or the status is undefined or null');
-        // Здесь можно добавить другие действия или утверждения
       }
 
-      // Здесь можно добавить дополнительные проверки, например, наличие определенных элементов на странице.
     });
 
     cy.log('Completed: Visited Home Page');
