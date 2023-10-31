@@ -123,7 +123,8 @@ class ShippingPage {
 
     // Proceed to the billing page
     GoNextToBillingPage() {
-        cy.xpath(ShippingPageLocators.goNextToBillingPage)
+        cy.wait(3000);
+        cy.xpath('//*[@id="order-summary"]/div[2]/a')
           .should('be.visible')
           .click()
           .then(($el) => {

@@ -1,14 +1,17 @@
-// Importing Page Objects
-import LoginPage from '../support/page_objects/LoginPage/LoginPage';
-import HomePage from '../support/page_objects/HomePage/HomePage';
-import CartPage from '../support/page_objects/CartPage/CartPage';
-import ShippingPage from '../support/page_objects/ShippingPage/ShippingPage';
-import BillingPageAccountBilling from '../support/page_objects/BillingPage/BillingPageAccountBilling';
-import BillingPageCreditCard from '../support/page_objects/BillingPage/BillingPageCreditCard';
-import GetBalancePopUp from '../support/page_objects/BillingPage/GetBalancePopUp/GetBalance';
-import TestData from './Secret_variables/Test_data';
+const WAIT_TIME = 6000;
 
-describe('Login and Post-Login Tests', function() {
+
+// Import Page Objects
+import LoginPage from '../../../../support/Critical_Path/page_objects/LoginPage/LoginPage';
+import HomePage from '../../../../support/Critical_Path/page_objects/HomePage/HomePage';
+import CartPage from '../../../../support/Critical_Path/page_objects/CartPage/CartPage';
+import ShippingPage from '../../../../support/Critical_Path/page_objects/ShippingPage/ShippingPage';
+import BillingPageAccountBilling from '../../../../support/Critical_Path/page_objects/BillingPage/BillingPageAccountBilling';
+import BillingPageCreditCard from '../../../../support/Critical_Path/page_objects/BillingPage/BillingPageCreditCard';
+import GetBalancePopUp from '../../../../support/Critical_Path/page_objects/BillingPage/GetBalancePopUp/GetBalance';
+import TestData from '../../../../fixtures/Secret_variables/Test_data';
+
+describe('Login and Post-Login Tests', function () {
   // Initializing Page Objects
   const loginPage = new LoginPage();
   const homePage = new HomePage();
@@ -19,29 +22,30 @@ describe('Login and Post-Login Tests', function() {
   const getBalancePopUp = new GetBalancePopUp();
 
   // This block runs before each test
-  beforeEach(() => {
-    cy.log('Clearing cookies and local storage'); // Logging
-    cy.clearCookies();  // Clear all cookies
-    cy.clearLocalStorage();  // Clear local storage
-  });
+beforeEach(() => {
+  cy.log('Setting viewport to 414x896'); // Logging
+  cy.viewport(414, 896); // Set viewport resolution
+
+  cy.log('Clearing cookies and local storage'); // Logging
+  cy.clearCookies();  // Clear all cookies
+  cy.clearLocalStorage();  // Clear local storage
+});
 
   // Main Test Scenario
-  it('Should login and then perform actions', function() {
-    cy.log('Starting Login Phase'); // Logging
-    // Login Phase
-    loginPage.visit();
-    loginPage.fillEmail(TestData.email);
-    loginPage.fillPassword(TestData.password);
-    loginPage.clickLoginButton();
-    loginPage.checkNoErrorMessage();
+  it('Perform Login and Post-Login Actions', function () {
+    cy.log('Starting Login Phase'); // Logging actions
+    loginPage.visit(); // Navigate to the login page
+    loginPage.fillEmail(TestData.email); // Fill in the Email field
+    loginPage.fillPassword(TestData.password); // Fill in the Password field
+    loginPage.clickLoginButton(); // Click the login button
+    loginPage.checkNoErrorMessage(); // Check for the absence of error messages
 
-    cy.log('Verifying successful login'); // Logging
-    // Verify successful login
-    cy.wait(6000);
-    cy.url().should('include', '/home');
+    cy.log('Verifying successful login'); // Logging verification
+    cy.wait(WAIT_TIME); // Wait
+    cy.url().should('include', '/home'); // Check the URL
 
     cy.log('Performing actions on the Home Page'); // Logging
-    // Actions on Home Page
+    // Actions on the Home Page
     homePage.ClickCategoryItemButton();
     homePage.SelectCategoryItem_GI();
     homePage.OpenFiltersCollection();
@@ -58,8 +62,8 @@ describe('Login and Post-Login Tests', function() {
     cy.log('Proceeding to checkout'); // Logging
     cartPage.OpenProceedCheckoutPage();
 
-    cy.log('Performing actions on Shipping Page'); // Logging
-    // Actions on Shipping Page
+    cy.log('Performing actions on the Shipping Page'); // Logging
+    // Actions on the Shipping Page
     shippingPage.OpenShippingAddresses();
     shippingPage.SelectShippingAddress();
     shippingPage.AcceptShippingAddress();
@@ -72,8 +76,8 @@ describe('Login and Post-Login Tests', function() {
     //shippingPage.SelectDeliveryOption();
     shippingPage.GoNextToBillingPage();
 
-    cy.log('Performing actions on Billing Page'); // Logging
-    // Actions on Billing Page
+    cy.log('Performing actions on the Billing Page'); // Logging
+    // Actions on the Billing Page
     billingPageCreditCard.OpenPaymentMethod();
     billingPageCreditCard.SelectPaymentMethodCreditCard();
     billingPageCreditCard.OpenBillingAddressList();
@@ -89,5 +93,4 @@ describe('Login and Post-Login Tests', function() {
     //billingPageCreditCard.checkElementAndCompleteTest();
     billingPageCreditCard.checkElementAndEndTest();
   });
-
 });
