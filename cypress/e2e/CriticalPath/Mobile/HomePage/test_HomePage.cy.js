@@ -1,5 +1,5 @@
 import LoginPage from '../../../../support/Critical_Path/page_objects/LoginPage/LoginPage';
-import HomePage from '../../../../support/Critical_Path/page_objects/HomePage/HomePage';
+import HomePage from '../../../../support/Mobile/page_objects/HomePage/HomePage';
 import TestData from '../../../../fixtures/Secret_variables/Test_data';
 
 
@@ -33,5 +33,7 @@ describe('Login and HomePage Tests', function() {
     cy.url().should('include', '/home');
 
     cy.log('Performing actions on the Home Page'); // Logging
+
+        homePage.ClickCategoryItemButton();
         });
 });
