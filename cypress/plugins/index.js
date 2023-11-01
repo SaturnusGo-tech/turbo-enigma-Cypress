@@ -39,7 +39,6 @@ module.exports = (on, config) => {
       console.log('From task:', message);
       return null;
     },
-    // ... (Your existing methods)
 
     /**
      * @function isUrlAccessible
