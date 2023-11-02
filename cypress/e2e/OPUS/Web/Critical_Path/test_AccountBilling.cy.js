@@ -1,10 +1,10 @@
 // Importing Page Objects
-import LoginPage from '../../../../support/Critical_Path/page_objects/LoginPage/LoginPage';
-import HomePage from '../../../../support/Critical_Path/page_objects/HomePage/HomePage';
-import CartPage from '../../../../support/Critical_Path/page_objects/CartPage/CartPage';
-import ShippingPage from '../../../../support/Critical_Path/page_objects/ShippingPage/ShippingPage';
-import BillingPageAccountBilling from '../../../../support/Critical_Path/page_objects/BillingPage/BillingPageAccountBilling';
-import GetBalancePopUp from '../../../../support/Critical_Path/page_objects/BillingPage/GetBalancePopUp/GetBalance';
+import LoginPage from '../../../../support/Core_Testing_Elements_web/page_objects/LoginPage/LoginPage';
+import HomePage from '../../../../support/Core_Testing_Elements_web/page_objects/HomePage/HomePage';
+import CartPage from '../../../../support/Core_Testing_Elements_web/page_objects/CartPage/CartPage';
+import ShippingPage from '../../../../support/Core_Testing_Elements_web/page_objects/ShippingPage/ShippingPage';
+import BillingPageAccountBilling from '../../../../support/Core_Testing_Elements_web/page_objects/BillingPage/BillingPageAccountBilling';
+import GetBalancePopUp from '../../../../support/Core_Testing_Elements_web/page_objects/BillingPage/GetBalancePopUp/GetBalance';
 import TestData from '../../../../fixtures/Secret_variables/Test_data';
 
 describe('Login and Post-Login Tests', function() {
@@ -18,9 +18,6 @@ describe('Login and Post-Login Tests', function() {
 
  // This block runs before each test
 beforeEach(() => {
-  cy.log('Setting viewport to 414x896'); // Logging
-  cy.viewport(414, 896); // Set viewport resolution
-
   cy.log('Clearing cookies and local storage'); // Logging
   cy.clearCookies();  // Clear all cookies
   cy.clearLocalStorage();  // Clear local storage

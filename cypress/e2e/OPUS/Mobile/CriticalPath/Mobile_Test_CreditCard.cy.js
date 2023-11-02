@@ -2,13 +2,13 @@ const WAIT_TIME = 6000;
 
 
 // Import Page Objects
-import LoginPage from '../../../../support/Critical_Path/page_objects/LoginPage/LoginPage';
-import HomePage from '../../../../support/Critical_Path/page_objects/HomePage/HomePage';
-import CartPage from '../../../../support/Critical_Path/page_objects/CartPage/CartPage';
-import ShippingPage from '../../../../support/Critical_Path/page_objects/ShippingPage/ShippingPage';
-import BillingPageAccountBilling from '../../../../support/Critical_Path/page_objects/BillingPage/BillingPageAccountBilling';
-import BillingPageCreditCard from '../../../../support/Critical_Path/page_objects/BillingPage/BillingPageCreditCard';
-import GetBalancePopUp from '../../../../support/Critical_Path/page_objects/BillingPage/GetBalancePopUp/GetBalance';
+import LoginPage from '../../../../support/Core_Testing_Elements_web/page_objects/LoginPage/LoginPage';
+import HomePage from '../../../../support/Core_Testing_Elements_web/page_objects/HomePage/HomePage';
+import CartPage from '../../../../support/Core_Testing_Elements_web/page_objects/CartPage/CartPage';
+import ShippingPage from '../../../../support/Core_Testing_Elements_web/page_objects/ShippingPage/ShippingPage';
+import BillingPageAccountBilling from '../../../../support/Core_Testing_Elements_web/page_objects/BillingPage/BillingPageAccountBilling';
+import BillingPageCreditCard from '../../../../support/Core_Testing_Elements_web/page_objects/BillingPage/BillingPageCreditCard';
+import GetBalancePopUp from '../../../../support/Core_Testing_Elements_web/page_objects/BillingPage/GetBalancePopUp/GetBalance';
 import TestData from '../../../../fixtures/Secret_variables/Test_data';
 
 describe('Login and Post-Login Tests', function () {

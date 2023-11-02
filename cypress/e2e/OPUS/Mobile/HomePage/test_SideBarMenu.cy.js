@@ -1,10 +1,10 @@
-import LoginPage from '../../../../support/Critical_Path/page_objects/LoginPage/LoginPage';
-import HomePage from '../../../../support/Mobile/page_objects/HomePage/HomePage';
+import LoginPage from '../../../../support/Core_Testing_Elements_web/page_objects/LoginPage/LoginPage';
+import SideBarMenu from '../../../../support/Mobile/page_objects/HomePage/SideBarMenu';
 import TestData from '../../../../fixtures/Secret_variables/Test_data';
 
 describe('Login and HomePage Tests', function() {
     const loginPage = new LoginPage();
-    const homePage = new HomePage();
+    const sideBarMenu = new SideBarMenu();
 
     // This block runs once before all tests
     before(() => {
@@ -37,9 +37,15 @@ describe('Login and HomePage Tests', function() {
         performLogin();
 
         cy.log('Performing actions on the Home Page'); // Logging
-        homePage.ClickCategoryItemButton();
-        homePage.checkButtonsAvailabilityAndClickability();
-        homePage.OpenCatalogMenu();
-        homePage.checkForChildLinks();
+        sideBarMenu.ClickCategoryItemButton();
+        sideBarMenu.checkButtonsAvailabilityAndClickability();
+        sideBarMenu.checkButtonsAvailabilityAnd();
+        sideBarMenu.OpenCatalogMenu();
+        sideBarMenu.checkForChildLinks();
+        sideBarMenu.GetBackToLinksList();
+        sideBarMenu.OpenAccountInfo();
+        sideBarMenu.checkAccountInfo();
+        sideBarMenu.GetBackToLinksList();
+        sideBarMenu.checkSocialButtonssAvailability();
     });
 });
