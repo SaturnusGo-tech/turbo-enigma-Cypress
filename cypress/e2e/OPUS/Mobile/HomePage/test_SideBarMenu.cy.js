@@ -1,5 +1,5 @@
-import LoginPage from '../../../../support/Core_Testing_Elements_web/page_objects/LoginPage/LoginPage';
-import SideBarMenu from '../../../../support/Mobile/page_objects/HomePage/SideBarMenu';
+import LoginPage from '../../../../support/Critical_Path/page_objects/LoginPage/LoginPage';
+import SideBarMenu from '../../../../support/Core_mobile/page_objects/HomePage/SideBarMenu';
 import TestData from '../../../../fixtures/Secret_variables/Test_data';
 
 describe('Login and HomePage Tests', function() {

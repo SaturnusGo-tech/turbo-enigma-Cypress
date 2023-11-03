@@ -1,4 +1,4 @@
-import AuthLogin from '../../navigation/AuthLogin';
+import AuthLogin from '../../../../fixtures/navigation/AuthLogin';
 import { LoginPageLocators } from './LoginPageLocators/LoginPageLocators';
 
 const ERROR_MESSAGE_INVALID_LOGIN = 'Invalid login credentials';

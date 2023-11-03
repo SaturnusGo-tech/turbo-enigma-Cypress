@@ -1,5 +1,5 @@
-import Supplier_Enrollment_Flow_Verification from '../../../../support/Core_Testing_Elements_web/page_objects/Supplier_Enrollment_Flow_Verification/Supplier_Registration_Actions/Registration';
-import LoginPage from "../../../../support/Core_Testing_Elements_web/page_objects/LoginPage/LoginPage";
+import Supplier_Enrollment_Flow_Verification from '../../../../support/Core_web/HomePage/Supplier_Enrollment_Flow_Verification/Supplier_Registration_Actions/Registration';
+import LoginPage from "../../../../support/Critical_Path/page_objects/LoginPage/LoginPage";
 
 // Test suite for Vendor Registration Procedure
 describe('Vendor registration procedure test', function() {
