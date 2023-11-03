@@ -7,6 +7,11 @@ describe('Catalog Images Validation after Login', function () {
     const loginPage = new LoginPage();
     const catalog = new CatalogPage();
 
+     // Set viewport to iPhone 12/13 Pro Max resolution
+    beforeEach(() => {
+        cy.viewport(414, 896);
+    });
+
     // Main Test Scenario
     it('Should login and then validate catalog images', function() {
         cy.log('--- Starting Login Phase ---');
