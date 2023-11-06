@@ -3,7 +3,7 @@ import { CatalogLocators } from '../CatalogLocators/Catalog_Locators';
 class CatalogPage {
 
 
-    checkImagePresence(imageLocator, imageAlt) {
+   checkImagePresence(imageLocator, imageAlt) {
         // Step: Ensure the image is present and visible on the page.
         console.log(`Validating the presence and visibility of image with locator: ${imageLocator}`);
         cy.get(imageLocator)
