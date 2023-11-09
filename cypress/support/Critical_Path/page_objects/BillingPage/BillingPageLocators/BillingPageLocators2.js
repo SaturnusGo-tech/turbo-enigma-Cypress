@@ -1,8 +1,8 @@
 export const BillingPageLocators2 = {
-    OpenPaymentMethod: '//*[@id="app"]/div/div[2]/div/div/div[2]/div[1]/div/div[2]/div/div[1]/div[2]/div/div[2]/div[1]/div[2]/button',
+    OpenPaymentMethod: '//*[@id="app"]/div/div[2]/div/div/div[2]/div[1]/div/div[2]/div/div/div[2]/div/div[2]/div[1]/div[2]/div/span',
     SelectPaymentMethodCreditCard: '//*[@id="app"]/div/div[2]/div/div/div[2]/div[1]/div/div[2]/div/div/div[2]/div/div[2]/div[1]/div[2]/div/ul/li[1]',
     OpenBillingAddressList: '//*[@id="app"]/div/div[2]/div/div/div[2]/div[1]/div/div[2]/div/div[1]/div[2]/div/div[1]/div[1]/div[2]/div/p/button',
-    SelectPaymentAddress: '/html/body/div[3]/div/div/div/div[2]/div/div/div[1]/table/tbody/tr[1]/td[3]/button',
+    SelectPaymentAddress: '//*[@id="headlessui-dialog-8"]/div[2]/div/div/div[1]/div[2]/div[1]/div/div/div[2]/button',
     AcceptPaymentPreference: '//*[@id="headlessui-dialog-8"]/div[2]/div/div/div[2]/button[3]',
     OpemSupplierPocketNurseMethod: '//*[@id="app"]/div/div[2]/div/div/div[2]/div[1]/div/div[2]/div/div[2]/div[2]/div/div[2]/div[1]/div[2]/button',
     SelectPocketNursePaymentMethod: '//*[@id="app"]/div/div[2]/div/div/div[2]/div[1]/div/div[2]/div/div[2]/div[2]/div/div[2]/div[1]/div[2]/div/ul/li/span',

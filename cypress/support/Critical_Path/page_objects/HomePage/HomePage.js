@@ -16,7 +16,7 @@ class HomePage {
   // Select the 'GI' category item
   SelectCategoryItem_GI() {
     cy.wait(3000);  // Wait for 3 seconds
-    cy.get(HomePageLocators.categoryItem_GI)
+    cy.xpath(HomePageLocators.categoryItem_GI)
       .first()
       .click()  // Click the first 'GI' category item
       .then(($el) => {
@@ -61,7 +61,7 @@ class HomePage {
   // Select the 'PN' category item
   SelectCategoryItemPN() {
     cy.wait(1500);  // Wait for 1.5 seconds
-    cy.get(HomePageLocators.categoryItemPN)
+    cy.xpath(HomePageLocators.categoryItemPN)
       .first()
       .click()  // Click the first 'PN' category item
       .then(($el) => {

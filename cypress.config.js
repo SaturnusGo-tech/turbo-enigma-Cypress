@@ -1,15 +1,11 @@
-const { defineConfig } = require("cypress");
-
-
-require('dotenv').config();
+// cypress.config.js
+const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
-  env: {
-    username: process.env.OPUS_LOGIN,
-    password: process.env.OPUS_PASSWORD
-  },
   e2e: {
     setupNodeEvents(on, config) {
+      require('@cypress/code-coverage/task')(on, config);
+      return config;
     },
   },
 });

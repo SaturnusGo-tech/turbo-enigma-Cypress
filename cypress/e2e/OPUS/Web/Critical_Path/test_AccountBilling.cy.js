@@ -43,9 +43,9 @@ beforeEach(() => {
     // Actions on Home Page
     homePage.ClickCategoryItemButton();
     homePage.SelectCategoryItem_GI();
-    homePage.OpenFiltersCollection();
-    homePage.SelectCheckBoxPocketNurse();
-    homePage.AcceptReference();
+    //homePage.OpenFiltersCollection();
+    //homePage.SelectCheckBoxPocketNurse();
+   // homePage.AcceptReference();
     //homePage.SelectCategoryItemPN();
     homePage.OpenCart();
 

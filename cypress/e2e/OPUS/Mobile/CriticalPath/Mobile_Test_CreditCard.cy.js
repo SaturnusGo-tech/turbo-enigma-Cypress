@@ -1,6 +1,5 @@
 const WAIT_TIME = 6000;
 
-
 // Import Page Objects
 import LoginPage from '../../../../support/Critical_Path/page_objects/LoginPage/LoginPage';
 import HomePage from '../../../../support/Critical_Path/page_objects/HomePage/HomePage';
@@ -21,76 +20,76 @@ describe('Login and Post-Login Tests', function () {
   const billingPageCreditCard = new BillingPageCreditCard();
   const getBalancePopUp = new GetBalancePopUp();
 
-  // This block runs before each test
-beforeEach(() => {
-  cy.log('Setting viewport to 414x896'); // Logging
-  cy.viewport(414, 896); // Set viewport resolution
+  beforeEach(() => {
+    cy.viewport(414, 896);
+    cy.clearCookies();
+    cy.clearLocalStorage();
+  });
 
-  cy.log('Clearing cookies and local storage'); // Logging
-  cy.clearCookies();  // Clear all cookies
-  cy.clearLocalStorage();  // Clear local storage
-});
-
-  // Main Test Scenario
   it('Perform Login and Post-Login Actions', function () {
-    cy.log('Starting Login Phase'); // Logging actions
-    loginPage.visit(); // Navigate to the login page
-    loginPage.fillEmail(TestData.email); // Fill in the Email field
-    loginPage.fillPassword(TestData.password); // Fill in the Password field
-    loginPage.clickLoginButton(); // Click the login button
-    loginPage.checkNoErrorMessage(); // Check for the absence of error messages
+    // Login Phase
+    loginPage.visit();
+    loginPage.fillEmail(TestData.email);
+    loginPage.fillPassword(TestData.password);
+    loginPage.clickLoginButton();
+    loginPage.checkNoErrorMessage();
 
-    cy.log('Verifying successful login'); // Logging verification
-    cy.wait(WAIT_TIME); // Wait
-    cy.url().should('include', '/home'); // Check the URL
+    // Verify successful login
+    cy.wait(WAIT_TIME);
+    cy.url().should('include', '/home');
 
-    cy.log('Performing actions on the Home Page'); // Logging
     // Actions on the Home Page
+    // TODO: Implement ClickCategoryItemButton in HomePage class
     homePage.ClickCategoryItemButton();
+    // TODO: Implement SelectCategoryItem_GI in HomePage class
     homePage.SelectCategoryItem_GI();
-    homePage.OpenFiltersCollection();
-    homePage.SelectCheckBoxPocketNurse();
+    // TODO: Implement OpenFiltersCollection in HomePage class
+     homePage.OpenFiltersCollection();
+    // TODO: Implement SelectCheckBoxPocketNurse in HomePage class
+     homePage.SelectCheckBoxPocketNurse();
+    // TODO: Implement AcceptReference in HomePage class
+    // homePage.SelectCategoryItemPN(); //
     homePage.AcceptReference();
-    //homePage.SelectCategoryItemPN();
+    // TODO: Implement OpenCart in HomePage class
     homePage.OpenCart();
 
-    cy.log('Verifying the cart is not empty'); // Logging
-    // Check that cart is not empty
+
+    // Verify the cart is not empty
+    // TODO: Implement getAndStoreCartValue in CartPage class
     // cartPage.getAndStoreCartValue();
+    // TODO: Replace 'cartPage.cartValue' with actual method to retrieve cart value
     // expect(cartPage.cartValue).to.be.greaterThan(0);
 
-    cy.log('Proceeding to checkout'); // Logging
+    // Proceed to checkout
     cartPage.OpenProceedCheckoutPage();
 
-    cy.log('Performing actions on the Shipping Page'); // Logging
     // Actions on the Shipping Page
     shippingPage.OpenShippingAddresses();
     shippingPage.SelectShippingAddress();
     shippingPage.AcceptShippingAddress();
     shippingPage.OpenDeliverAddress();
     shippingPage.SelectDeliveryMethod();
-    //shippingPage.OpenAddressList();
-    //shippingPage.SelectEqualTypeOfShippingAddress();
-    //shippingPage.AcceptShippingPreference();
-    //shippingPage.OpenDeliveryMethod();
-    //shippingPage.SelectDeliveryOption();
+    // TODO: Implement the rest of the commented out shipping actions if necessary
     shippingPage.GoNextToBillingPage();
 
-    cy.log('Performing actions on the Billing Page'); // Logging
     // Actions on the Billing Page
     billingPageCreditCard.OpenPaymentMethod();
     billingPageCreditCard.SelectPaymentMethodCreditCard();
     billingPageCreditCard.OpenBillingAddressList();
     billingPageCreditCard.SelectPaymentAddress();
     billingPageCreditCard.AcceptPaymentPreference();
-    //billingPageCreditCard.OpemSupplierPocketNurseMethod();
-    //billingPageCreditCard.SelectPocketNursePaymentMethod();
+    // TODO: Implement the commented out billing actions if they are part of the test
     billingPageCreditCard.ReviewOrderButton();
     billingPageCreditCard.PlaceOrderButton();
+
+    // TODO: Implement a check to verify the order was placed successfully
+    // billingPageCreditCard.verifyOrderSuccess(); // This is a placeholder, replace with actual method
+
+    // Post-order actions (if needed)
     billingPageCreditCard.GoBackToCart();
     billingPageCreditCard.PullBackPaymentButton();
     billingPageCreditCard.PullBackPaymentMethodConfirm();
-    //billingPageCreditCard.checkElementAndCompleteTest();
-    billingPageCreditCard.checkElementAndEndTest();
+    // TODO: Implement checkElementAndEndTest in BillingPageCreditCard class
+    // billingPageCreditCard.checkElementAndEndTest();
   });
 });

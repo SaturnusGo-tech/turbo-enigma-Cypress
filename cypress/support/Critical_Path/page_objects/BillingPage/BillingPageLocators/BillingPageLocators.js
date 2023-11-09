@@ -1,6 +1,6 @@
 export const BillingPageLocators = {
-    OpenPaymentMethod: '//*[@id="app"]/div/div[2]/div/div/div[2]/div[1]/div/div[2]/div/div[1]/div[2]/div/div[2]/div[1]/div[2]/button',
-    SelectPaymentMethodCreditCard: '//*[@id="app"]/div/div[2]/div/div/div[2]/div[1]/div/div[2]/div/div/div[2]/div/div[2]/div[1]/div[2]/div/ul/li[2]',
+    OpenPaymentMethod: '//*[@id="app"]/div/div[2]/div/div/div[2]/div[1]/div/div[2]/div/div/div[2]/div/div[2]/div[1]/div[2]/div',
+    SelectPaymentMethodCreditCard: '//*[@id="app"]/div/div[2]/div/div/div[2]/div[1]/div/div[2]/div/div/div[2]/div/div[2]/div[1]/div[2]/div[2]/ul/li[2]/span',
     OpenBillingAddressList: '//*[@id="app"]/div/div[2]/div/div/div[2]/div[1]/div/div[2]/div/div[1]/div[2]/div/div[1]/div[1]/div[2]/div/p/button',
     SelectPaymentAddress: '/html/body/div[3]/div/div/div/div[2]/div/div/div[1]/table/tbody/tr[1]/td[3]/button',
     AcceptPaymentPreference: '//*[@id="headlessui-dialog-14"]/div[2]/div/div/div[2]/button[3]',

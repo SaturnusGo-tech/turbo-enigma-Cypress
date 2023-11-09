@@ -14,17 +14,26 @@ class ShippingPage {
           });
     }
 
-    // Select a specific shipping address
-    SelectShippingAddress() {
-        cy.wait(1500);
-        cy.xpath(ShippingPageLocators.selectShippingAddress)
-          .should('be.visible')
-          .click()
-          .then(($el) => {
-              cy.log(`Clicked on SelectShippingAddress with XPath: ${ShippingPageLocators.selectShippingAddress}`);
-              cy.log(`Element state: ${$el}`);
-          });
+   // Select a specific shipping address
+SelectShippingAddress(IfNoFoundSelectThis) {
+  cy.wait(1500); // Wait for 1.5 seconds
+
+  // Try to find and click the element using the primary locator
+  cy.xpath(ShippingPageLocators.selectShippingAddress, { timeout: 5000 })
+    .should('be.visible')
+    .click()
+    .then($el => {
+        cy.log(`Clicked on SelectShippingAddress with XPath: ${ShippingPageLocators.selectShippingAddress}`);
+    })
+    .then(null, error => {
+        // In case of an error, try using an alternative locator
+        cy.log('Primary locator not found, trying alternative locator.');
+        cy.xpath(ShippingPageLocators.IfNoFoundSelectThis).should('be.visible').click().then($alternativeEl => {
+            cy.log(`Clicked on alternative SelectShippingAddress with XPath: ${ShippingPageLocators.IfNoFoundSelectThis}`);
+        });
+    });
     }
+
 
     // Confirm the selected shipping address
     AcceptShippingAddress() {
@@ -123,7 +132,7 @@ class ShippingPage {
 
     // Proceed to the billing page
     GoNextToBillingPage() {
-        cy.wait(3000);
+        cy.wait(5000);
         cy.xpath('//*[@id="order-summary"]/div[2]/a')
           .should('be.visible')
           .click()

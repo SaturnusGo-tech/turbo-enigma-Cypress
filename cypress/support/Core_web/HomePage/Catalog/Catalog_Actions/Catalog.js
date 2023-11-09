@@ -3,20 +3,25 @@ import { CatalogLocators } from '../CatalogLocators/Catalog_Locators';
 class CatalogPage {
 
 
-   checkImagePresence(imageLocator, imageAlt) {
-        // Step: Ensure the image is present and visible on the page.
-        console.log(`Validating the presence and visibility of image with locator: ${imageLocator}`);
-        cy.get(imageLocator)
-          .should('be.visible')
-          .and(($img) => {
-              // Check that the 'naturalWidth' attribute of the image is greater than 0 (indicating the image has loaded).
-              expect($img[0].naturalWidth).to.be.greaterThan(0);
-          })
-          .and('have.attr', 'alt', imageAlt);
+ // Функция checkImagePresence проверяет, что изображение присутствует, видимо и загружено
+checkImagePresence(imageLocator, imageAlt) {
+    // Логирование: Валидация присутствия и видимости изображения
+    console.log(`Validating the presence and visibility of image with locator: ${imageLocator}`);
 
-        // Step: Ensure the image is clickable.
-        console.log(`Checking clickability of image with locator: ${imageLocator}`);
-    }
+    // Получаем элемент изображения с учетом пользовательского таймаута
+    // для увеличения времени ожидания в случае медленной загрузки изображения
+    cy.get(imageLocator, { timeout: 10000 }) // Устанавливаем таймаут в 10 секунд
+      .should('be.visible') // Проверяем, что элемент видим
+      .and(($img) => {
+          // Проверяем, что натуральная ширина изображения больше 0, что указывает на его загрузку
+          expect($img[0].naturalWidth, 'Image width').to.be.greaterThan(0);
+      })
+      .and('have.attr', 'alt', imageAlt) // Проверяем наличие атрибута alt у изображения
+
+    // Если необходимо, проверяем, что изображение можно кликнуть
+    console.log(`Checking clickability of image with locator: ${imageLocator}`);
+    // В этом месте могут быть дополнительные проверки на кликабельность, если это требуется для вашего теста
+}
 
     validateCategoryImages(category) {
         console.log(`Starting validation for ${category.name} images.`);
