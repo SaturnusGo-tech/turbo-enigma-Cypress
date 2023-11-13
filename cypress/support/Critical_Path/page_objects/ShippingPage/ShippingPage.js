@@ -34,6 +34,25 @@ SelectShippingAddress(IfNoFoundSelectThis) {
     });
     }
 
+    SelectShippingAddressWeb(IfNoFoundSelectThis) {
+  cy.wait(1500); // Wait for 1.5 seconds
+
+  // Try to find and click the element using the primary locator
+  cy.xpath(ShippingPageLocators.selectShippingAddressWeb, { timeout: 5000 })
+    .should('be.visible')
+    .click()
+    .then($el => {
+        cy.log(`Clicked on SelectShippingAddress with XPath: ${ShippingPageLocators.selectShippingAddressWeb}`);
+    })
+    .then(null, error => {
+        // In case of an error, try using an alternative locator
+        cy.log('Primary locator not found, trying alternative locator.');
+        cy.xpath(ShippingPageLocators.IfNoFoundSelectThisWeb).should('be.visible').click().then($alternativeEl => {
+            cy.log(`Clicked on alternative SelectShippingAddress with XPath: ${ShippingPageLocators.IfNoFoundSelectThisWeb}`);
+        });
+    });
+    }
+
 
     // Confirm the selected shipping address
     AcceptShippingAddress() {
@@ -61,6 +80,17 @@ SelectShippingAddress(IfNoFoundSelectThis) {
 
     // Select a delivery method
     SelectDeliveryMethod() {
+        cy.wait(3000);
+        cy.xpath(ShippingPageLocators.selectDeliveryMethod)
+          .should('be.visible')
+          .click()
+          .then(($el) => {
+              cy.log(`Clicked on SelectDeliveryMethod with XPath: ${ShippingPageLocators.selectDeliveryMethod}`);
+              cy.log(`Element state: ${$el}`);
+          });
+    }
+
+      SelectDeliveryMethodWeb() {
         cy.wait(3000);
         cy.xpath(ShippingPageLocators.selectDeliveryMethod)
           .should('be.visible')

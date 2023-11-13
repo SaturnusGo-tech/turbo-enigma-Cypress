@@ -44,7 +44,7 @@ describe('Login and Post-Login Tests', function() {
     // TODO: Verify that SelectCheckBoxPocketNurse checks the correct checkbox
     homePage.SelectCheckBoxPocketNurse();
     // TODO: Implement AcceptReference if needed to confirm any references
-    // homePage.AcceptReference();
+    homePage.AcceptReference();
     // TODO: If necessary, implement SelectCategoryItemPN to select specific category items
     // homePage.SelectCategoryItemPN(); // Uncomment if needed
     homePage.OpenCart();

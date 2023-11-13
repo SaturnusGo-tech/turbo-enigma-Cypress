@@ -60,10 +60,10 @@ beforeEach(() => {
     cy.log('Performing actions on Shipping Page'); // Logging
     // Actions on Shipping Page
     shippingPage.OpenShippingAddresses();
-    shippingPage.SelectShippingAddress();
+    shippingPage.SelectShippingAddressWeb();
     shippingPage.AcceptShippingAddress();
     shippingPage.OpenDeliverAddress();
-    shippingPage.SelectDeliveryMethod();
+    shippingPage.SelectDeliveryMethodWeb();
     //shippingPage.OpenAddressList();
     //shippingPage.SelectEqualTypeOfShippingAddress();
     //shippingPage.AcceptShippingPreference();

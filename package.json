@@ -16,7 +16,7 @@
     "@cypress/code-coverage": "^3.12.9",
     "@istanbuljs/nyc-config-babel": "^3.0.0",
     "babel-plugin-istanbul": "^6.1.1",
-    "cypress": "^13.3.2",
+    "cypress": "^13.5.0",
     "cypress-xpath": "^2.0.1",
     "istanbul-lib-coverage": "^3.2.1",
     "nyc": "^15.1.0",

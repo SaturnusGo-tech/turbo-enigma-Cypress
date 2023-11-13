@@ -49,7 +49,7 @@ class HomePage {
 
   // Accept the reference
   AcceptReference() {
-    cy.wait(2500);  // Wait for 2.5 seconds
+    cy.wait(4500);  // Wait for 2.5 seconds
     cy.xpath(HomePageLocators.acceptReference)
       .click()  // Click to accept the reference
       .then(($el) => {
