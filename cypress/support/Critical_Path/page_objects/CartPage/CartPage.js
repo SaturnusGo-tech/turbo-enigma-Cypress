@@ -4,23 +4,24 @@ class CartPage {
 
   // Retrieve and store the current cart value
   getAndStoreCartValue() {
-    cy.wait(2000);  // Wait for 2 seconds to ensure the cart value is loaded
-    cy.xpath(CartPageLocators.cartValue)
-      .invoke('text')  // Get the text value of the cart
+    // Use should command to wait for the element to have the desired condition
+    cy.get(CartPageLocators.cartValue, { timeout: 10000 })
+      .should('be.visible')
+      .invoke('text')
       .then((text) => {
-        cy.wrap(text).as('cartValue');  // Store the cart value for future use
-        cy.log(`Retrieved and stored cart value: ${text}`);  // Log the stored cart value
+        cy.wrap(text).as('cartValue');
+        cy.log(`Retrieved and stored cart value: ${text}`);
       });
   }
 
   // Navigate to the Proceed to Checkout page
-  OpenProceedCheckoutPage() {
-    cy.wait(1800);  // Wait for 1.8 seconds to ensure all elements are loaded
-    cy.xpath(CartPageLocators.proceedCheckoutButton)
-      .click()  // Click the Proceed to Checkout button
-      .then(($el) => {
-        cy.log('Navigated to the Proceed to Checkout page');  // Log navigation
-        cy.log(`Element state: ${$el}`);  // Log the state of the clicked element
+  openProceedCheckoutPage() {
+    // Ensure the button is visible and clickable
+    cy.get(CartPageLocators.proceedCheckoutButton, { timeout: 10000 })
+      .should('be.visible').and('be.enabled')
+      .click()
+      .then(() => {
+        cy.log('Navigated to the Proceed to Checkout page');
       });
   }
 }

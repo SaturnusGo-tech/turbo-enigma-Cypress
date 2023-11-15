@@ -1,5 +1,5 @@
 import LoginPage from '../../../../../support/Critical_Path/page_objects/LoginPage/LoginPage';
-import CatalogPage from '../../../../../support/Core_web/HomePage/Catalog/Catalog_Actions/Catalog';
+import CatalogPage from '../../../../../support/Core_web/HomePage/Catalog/Catalog_Actions/CatalogTiles/Catalog';
 import TestData from "../../../../../fixtures/Secret_variables/Test_data";
 
 describe('Catalog Images Validation after Login', function () {

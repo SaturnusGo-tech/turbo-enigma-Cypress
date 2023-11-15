@@ -1,8 +1,14 @@
 import LoginPage from '../../../../../support/Critical_Path/page_objects/LoginPage/LoginPage';
-import CatalogPage from '../../../../../support/Core_web/HomePage/Catalog/Catalog_Actions/Catalog';
+import CatalogPage from '../../../../../support/Core_web/HomePage/Catalog/Catalog_Actions/CatalogTiles/Catalog';
 import TestData from "../../../../../fixtures/Secret_variables/Test_data";
 
 describe('Catalog Images Validation after Login', function () {
+    beforeEach(() => {
+        // Очистка cookies и localStorage перед каждым тестом
+        cy.clearCookies();
+        cy.clearLocalStorage();
+    });
+
     // Initializing Page Objects
     const loginPage = new LoginPage();
     const catalog = new CatalogPage();
@@ -29,14 +35,12 @@ describe('Catalog Images Validation after Login', function () {
 
         // Verify successful login
         cy.log('--- Verifying Successful Login ---');
-        cy.wait(6000);  // Consider replacing this with a more deterministic wait if possible, if not it's okay)
-        cy.url().should('include', '/home');
+        cy.url().should('include', '/home', { timeout: 10000 }); // Увеличение таймаута для ожидания перехода на страницу
         cy.log('Successfully logged in and redirected to home page.');
 
         // Catalog Validation
         cy.log('--- Starting Catalog Validation ---');
         catalog.validateAllImages();
         cy.log('Catalog images validated.');
-
     });
 });

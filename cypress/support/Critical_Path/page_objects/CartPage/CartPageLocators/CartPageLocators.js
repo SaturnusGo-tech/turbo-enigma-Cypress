@@ -1,4 +1,4 @@
 export const CartPageLocators = {
-    cartValue: '//*[@id="products"]/div[2]',
-    proceedCheckoutButton: '//*[@id="order-summary"]/div[2]/a'
+    cartValue: '#products > div:nth-child(2)',
+    proceedCheckoutButton: '#order-summary > div:nth-child(2) > a'
 };
