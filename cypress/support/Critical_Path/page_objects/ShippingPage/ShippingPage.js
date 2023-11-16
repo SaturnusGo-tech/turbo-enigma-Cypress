@@ -2,7 +2,10 @@ import { ShippingPageLocators } from './SippingLocators/ShippingLocators';
 
 class ShippingPage {
 
-    // Open the available shipping addresses
+     /**
+     * Opens the list of available shipping addresses.
+     * Waits for 10 seconds to ensure the page elements are loaded before attempting to click.
+     */
     OpenShippingAddresses() {
         cy.wait(10000);  // Wait for 10 seconds for the page to load
         cy.xpath(ShippingPageLocators.openShippingAddresses)
@@ -13,8 +16,11 @@ class ShippingPage {
               cy.log(`Element state: ${$el}`);
           });
     }
-
-   // Select a specific shipping address
+ /**
+     * Attempts to select a specific shipping address.
+     * If the primary locator fails to find the element, an alternative locator is used.
+     * Waits for 1.5 seconds before attempting the action.
+     */ // Select a specific shipping address
 SelectShippingAddress(IfNoFoundSelectThis) {
   cy.wait(1500); // Wait for 1.5 seconds
 
@@ -34,6 +40,10 @@ SelectShippingAddress(IfNoFoundSelectThis) {
     });
     }
 
+  /**
+     * Similar to SelectShippingAddress but intended for a different context (e.g., web).
+     * Tries to select a shipping address and falls back to an alternative if needed.
+     */
     SelectShippingAddressWeb(IfNoFoundSelectThis) {
   cy.wait(1500); // Wait for 1.5 seconds
 
@@ -54,7 +64,10 @@ SelectShippingAddress(IfNoFoundSelectThis) {
     }
 
 
-    // Confirm the selected shipping address
+      /**
+     * Confirms the selected shipping address.
+     * Waits for 7 seconds after clicking to allow for page update.
+     */
     AcceptShippingAddress() {
         cy.xpath(ShippingPageLocators.acceptShippingAddress)
           .should('be.visible')
@@ -66,7 +79,10 @@ SelectShippingAddress(IfNoFoundSelectThis) {
         cy.wait(7000);  // Wait for 7 seconds for the page to update
     }
 
-    // Open the delivery address options
+    /**
+     * Opens the delivery address options.
+     * Waits for 3 seconds to ensure the page is ready for interaction.
+     */
     OpenDeliverAddress() {
         cy.wait(3000);
         cy.xpath(ShippingPageLocators.openDeliverAddress)
@@ -78,7 +94,10 @@ SelectShippingAddress(IfNoFoundSelectThis) {
           });
     }
 
-    // Select a delivery method
+     /**
+     * Selects a delivery method from the available options.
+     * Waits for 3 seconds before attempting the action.
+     */
     SelectDeliveryMethod() {
         cy.wait(3000);
         cy.xpath(ShippingPageLocators.selectDeliveryMethod)
@@ -90,6 +109,9 @@ SelectShippingAddress(IfNoFoundSelectThis) {
           });
     }
 
+      /**
+     * Similar to SelectDeliveryMethod but intended for a different context (e.g., web).
+     */
       SelectDeliveryMethodWeb() {
         cy.wait(3000);
         cy.xpath(ShippingPageLocators.selectDeliveryMethod)
@@ -101,7 +123,10 @@ SelectShippingAddress(IfNoFoundSelectThis) {
           });
     }
 
-    // Open the address list to choose from
+      /**
+     * Opens the list of addresses to choose from.
+     * Forces a click if the element is not interactable, and waits for 3 seconds before the action.
+     */
     OpenAddressList() {
         cy.wait(3000);
         cy.xpath(ShippingPageLocators.openAddressList)
@@ -113,7 +138,9 @@ SelectShippingAddress(IfNoFoundSelectThis) {
           });
     }
 
-    // Select an address that has the same type as the shipping address
+    /**
+     * Selects an address that matches the type of the shipping address.
+     */
     SelectEqualTypeOfShippingAddress() {
         cy.xpath(ShippingPageLocators.selectEqualTypeOfShippingAddress)
           .should('be.visible')
@@ -124,7 +151,10 @@ SelectShippingAddress(IfNoFoundSelectThis) {
           });
     }
 
-    // Accept the shipping preference
+   /**
+     * Accepts the preferred shipping method.
+     * Waits for 3.5 seconds after clicking to allow for page update.
+     */
     AcceptShippingPreference() {
         cy.xpath(ShippingPageLocators.acceptShippingPreference)
           .should('be.visible')
@@ -136,7 +166,10 @@ SelectShippingAddress(IfNoFoundSelectThis) {
         cy.wait(3500);  // Wait for 3.5 seconds for the page to update
     }
 
-    // Open delivery method options
+
+    /**
+     * Opens the options for delivery methods.
+     */
     OpenDeliveryMethod() {
         cy.xpath(ShippingPageLocators.openDeliveryMethod)
           .first()
@@ -148,7 +181,10 @@ SelectShippingAddress(IfNoFoundSelectThis) {
           });
     }
 
-    // Select a delivery option
+    /**
+     * Selects a specific delivery option from the available choices.
+     * Waits for 4 seconds after the action to allow for page update.
+     */
     SelectDeliveryOption() {
         cy.xpath(ShippingPageLocators.selectDeliveryOption)
           .should('be.visible')
@@ -160,7 +196,10 @@ SelectShippingAddress(IfNoFoundSelectThis) {
         cy.wait(4000);  // Wait for 4 seconds for the page to update
     }
 
-    // Proceed to the billing page
+    /**
+     * Proceeds to the billing page.
+     * Waits for 5 seconds before attempting the click to ensure the page is ready.
+     */
     GoNextToBillingPage() {
         cy.wait(5000);
         cy.xpath('//*[@id="order-summary"]/div[2]/a')

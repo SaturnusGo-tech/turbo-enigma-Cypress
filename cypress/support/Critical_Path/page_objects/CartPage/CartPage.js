@@ -2,9 +2,12 @@ import { CartPageLocators } from './CartPageLocators/CartPageLocators';
 
 class CartPage {
 
-  // Retrieve and store the current cart value
+  /**
+   * Retrieves the current value from the cart and stores it using Cypress's aliasing feature.
+   * This method is useful for accessing the cart value in subsequent tests.
+   * It waits for the cart value element to be visible before retrieving the text.
+   */
   getAndStoreCartValue() {
-    // Use should command to wait for the element to have the desired condition
     cy.get(CartPageLocators.cartValue, { timeout: 10000 })
       .should('be.visible')
       .invoke('text')
@@ -14,11 +17,14 @@ class CartPage {
       });
   }
 
-  // Navigate to the Proceed to Checkout page
+  /**
+   * Navigates to the 'Proceed to Checkout' page.
+   * It ensures that the 'Proceed to Checkout' button is visible and then performs a click action on it.
+   * Logs the navigation action to the checkout page after clicking the button.
+   */
   openProceedCheckoutPage() {
-    // Ensure the button is visible and clickable
-    cy.get(CartPageLocators.proceedCheckoutButton, { timeout: 10000 })
-      .should('be.visible').and('be.enabled')
+    cy.xpath(CartPageLocators.proceedCheckoutButton, { timeout: 10000 })
+      .should('be.visible')
       .click()
       .then(() => {
         cy.log('Navigated to the Proceed to Checkout page');

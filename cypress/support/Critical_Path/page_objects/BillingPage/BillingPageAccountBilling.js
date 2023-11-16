@@ -2,7 +2,10 @@ import { BillingPageLocators } from './BillingPageLocators/BillingPageLocators';
 
 class BillingPageAccountBilling {
 
-    // Open the payment method section
+    /**
+     * Opens the payment method section on the billing page.
+     * Waits for 1 second before attempting to click.
+     */
     OpenPaymentMethod() {
         cy.wait(1000); // ml
         cy.xpath(BillingPageLocators.OpenPaymentMethod)
@@ -13,7 +16,10 @@ class BillingPageAccountBilling {
             });
     }
 
-    // Select Credit Card as a payment method
+    /**
+     * Selects 'Credit Card' as the payment method.
+     * Waits for 3 seconds after the click to ensure the action is processed.
+     */
     SelectPaymentMethodCreditCard() {
         cy.xpath(BillingPageLocators.SelectPaymentMethodCreditCard)
             .click()
@@ -24,7 +30,10 @@ class BillingPageAccountBilling {
         cy.wait(3000);
     }
 
-    // Open the list of available billing addresses
+     /**
+     * Opens the list of available billing addresses.
+     * This action is typically used to choose a billing address for the order.
+     */
     OpenBillingAddressList() {
         cy.xpath(BillingPageLocators.OpenBillingAddressList)
             .click()
@@ -34,7 +43,10 @@ class BillingPageAccountBilling {
             });
     }
 
-    // Select a payment address from the list
+     /**
+     * Selects a specific payment address from the list.
+     * Waits for 2.5 seconds after the selection for processing.
+     */
     SelectPaymentAddress() {
         cy.xpath(BillingPageLocators.SelectPaymentAddress)
             .click()
@@ -45,7 +57,10 @@ class BillingPageAccountBilling {
         cy.wait(2500);
     }
 
-    // Confirm the selected payment preferences
+    /**
+     * Confirms the selected payment preferences.
+     * Waits for 2 seconds after clicking for the action to be processed.
+     */
     AcceptPaymentPreference() {
         cy.xpath(BillingPageLocators.AcceptPaymentPreference)
             .click()
@@ -56,7 +71,10 @@ class BillingPageAccountBilling {
         cy.wait(2000);
     }
 
-    // Open Pocket Nurse payment methods
+    /**
+     * Opens the payment methods for a supplier, in this case, 'Pocket Nurse'.
+     * Waits for 1.5 seconds after the action.
+     */
     OpemSupplierPocketNurseMethod() {
         cy.xpath(BillingPageLocators.OpemSupplierPocketNurseMethod)
             .click()
@@ -67,7 +85,10 @@ class BillingPageAccountBilling {
         cy.wait(1500);
     }
 
-    // Select Pocket Nurse as the payment method
+     /**
+     * Selects 'Pocket Nurse' as the payment method.
+     * Waits for 1.5 seconds after making the selection.
+     */
     SelectPocketNursePaymentMethod() {
         cy.xpath(BillingPageLocators.SelectPocketNursePaymentMethod)
             .click()
@@ -78,7 +99,10 @@ class BillingPageAccountBilling {
         cy.wait(1500);
     }
 
-    // Click the Review Order Button
+     /**
+     * Clicks the 'Review Order' button to proceed with the order review.
+     * Waits for 3.5 seconds after the click to ensure the next page loads.
+     */
     ReviewOrderButton() {
         cy.xpath(BillingPageLocators.ReviewOrderButton)
             .click()
@@ -89,7 +113,10 @@ class BillingPageAccountBilling {
         cy.wait(3500);
     }
 
-    // Click the Place Order Button
+     /**
+     * Finalizes the order by clicking the 'Place Order' button.
+     * Waits for 5.5 seconds after the click to process the order placement.
+     */
     PlaceOrderButton() {
         cy.xpath(BillingPageLocators.PlaceOrderButton)
             .click()
@@ -100,7 +127,10 @@ class BillingPageAccountBilling {
         cy.wait(5500);
     }
 
-    // Navigate back to the cart
+    /**
+     * Navigates back to the cart page.
+     * Waits for 4.5 seconds before attempting the action.
+     */
     GoBackToCart() {
         cy.wait(4500);
         cy.xpath(BillingPageLocators.GoBackToCart)
@@ -112,7 +142,10 @@ class BillingPageAccountBilling {
         cy.wait(2500);
     }
 
-    // Pull back payment
+      /**
+     * Initiates the process to pull back or cancel the payment.
+     * Waits for 7.5 seconds after the action for processing.
+     */
     PullBackPaymentButton() {
         cy.xpath(BillingPageLocators.PullBackPaymentButton)
             .click()
@@ -123,7 +156,10 @@ class BillingPageAccountBilling {
         cy.wait(7500);
     }
 
-    // Confirm the pullback of payment
+    /**
+     * Confirms the action to pull back or cancel the payment method.
+     * Waits for 18 seconds after clicking to ensure the process is completed.
+     */
     PullBackPaymentMethodConfirm() {
         cy.xpath(BillingPageLocators.PullBackPaymentMethodConfirm)
             .click()
@@ -134,6 +170,11 @@ class BillingPageAccountBilling {
 
 
     }
+
+      /**
+     * Checks for the presence of a target element and completes the test if it exists.
+     * This method is typically used as a final step in a test to verify the success of previous actions.
+     */
      checkElementAndCompleteTest() {
          cy.log('Step: Checking for the presence of the target element');
          cy.xpath(BillingPageLocators.targetXPath)

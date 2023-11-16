@@ -1,50 +1,34 @@
-const productNames = [
-  "Bowman® Glove Box Dispenser - Quad - Divided",
-  "Global Industrial™ English 3 Ring Safety Data Sheet Binder",
-  "Slice® Auto Retractable Utility Knife - 10554",
-  "Pull Down Privacy Screens for 48\"W Dry Erase Boards",
-  "Global Industrial™ Wire Binder Rack",
-  "Global Industrial™ Single Stainless Steel Glove Box Holder",
-  "U-Channel Sign Post, 8'L, 1.12 lbs./ft., Galvanized Post",
-  "250 lbs. Concrete Base with 18\" Nesting Sleeve",
-  "Magnetic Acrylic Pocket Marker Holder",
-  "Global Industrial™ Plastic Box Cutter",
-  "Global Industrial Heavy Duty Magnets, Pack of 4",
-  "U-Channel Sign Post, 6'L, 1.12 lbs./ft., Green Post",
-  "Global Industrial Dry Erase Eraser - Pack of 6",
-  "ZING Eco GHS-SDS Binder (English/Spanish), 3.0\" Ring",
-  "Global Industrial™ Quadruple Glove Box Holder",
-];
+export function clickRandomAddToCartButton() {
+  // Using XPath to select all 'Add to cart' buttons within a specific div structure.
+  // The buttons are identified by their text and parent class attributes.
+  cy.xpath("//div[contains(@class, 'flex') and contains(@class, 'w-full')]//button[contains(., 'Add to cart')]")
+    .then($buttons => {
+      // Selecting a random button from the list of 'Add to cart' buttons.
+      const randomIndex = Math.floor(Math.random() * $buttons.length);
+      const buttonToClick = $buttons[randomIndex];
 
-{/* export function getAddToCartButtonLocator(texts, commonParentSelector, buttonSelector) {
-  const randomText = texts[Math.floor(Math.random() * texts.length)];
+      // Clicking the randomly selected 'Add to cart' button.
+      cy.wrap(buttonToClick).click();
 
-  return cy.get('body').then($body => {
-    const elementsWithText = $body.find('span').filter((index, el) => {
-      return Cypress.$(el).text().includes(randomText);
+      // Checking for the presence of a specific div element after the click action.
+      // The div is identified by its data attribute and class name.
+      cy.get("body").then($body => {
+        if ($body.find("div[data-v-b0da629d][class='whitespace-nowrap rounded-full bg-[color:var(--color-in-stock-out-bg)] px-[0.625rem] py-[1px] text-[13px] leading-5 text-[color:var(--color-in-stock-out)] lg:text-[11px]']").length > 0) {
+          // If the specific div is found, the function searches for another 'Add to cart' button to click.
+          // This ensures that the action is performed on an available (in-stock) item.
+          cy.xpath("//div[contains(@class, 'flex') and contains(@class, 'w-full')]//button[contains(., 'Add to cart')]")
+            .then($otherButtons => {
+              let nextButtonToClick;
+              do {
+                // Selecting another random button, ensuring it is different from the first one clicked.
+                const nextRandomIndex = Math.floor(Math.random() * $otherButtons.length);
+                nextButtonToClick = $otherButtons[nextRandomIndex];
+              } while (nextButtonToClick === buttonToClick && $otherButtons.length > 1) // Ensuring a different button is selected.
+
+              // Clicking the newly selected 'Add to cart' button.
+              cy.wrap(nextButtonToClick).click();
+            });
+        }
+      });
     });
-
-    if (elementsWithText.length === 0) {
-      throw new Error('No element with the specified text was found');
-    }
-
-    const addButton = elementsWithText.closest(commonParentSelector).find(buttonSelector);
-    if (addButton.length) {
-      return cy.wrap(addButton);
-    } else {
-      throw new Error('ADD TO CART button not found');
-    }
-  });
 }
-*/}
-export function getRandomTextElementLocator(texts) {
-  const randomText = texts[Math.floor(Math.random() * texts.length)];
-  return `:contains('${randomText}')`;
-}
-
-export function getAddToCartButtonLocator() {
-  return '.vc-button';
-}
-
-export default productNames;
-

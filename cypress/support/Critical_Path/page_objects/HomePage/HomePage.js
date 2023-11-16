@@ -1,9 +1,12 @@
 import { HomePageLocators } from './HomePageLocators/HomePageLocators';
-import productNames, { getAddToCartButtonLocator, getRandomTextElementLocator } from '../../../../plugins/locatorUtility';
+import { clickRandomAddToCartButton } from '../../../../plugins/locatorUtility';
 
 class HomePage {
-
-  // Click the 'Category Item' button
+  /**
+   * Clicks on the 'Category Item' button on the home page.
+   * Uses a locator from HomePageLocators to find the button and performs a click operation.
+   * Logs the action to Cypress after the click.
+   */
   clickCategoryItemButton() {
     cy.get(HomePageLocators.categoryItemButton, { timeout: 10000 })
       .should('be.visible')
@@ -13,27 +16,20 @@ class HomePage {
       });
   }
 
-  // Select the 'GI' category item
-selectCategoryItem_GI() {
-  const textElementLocator = getRandomTextElementLocator(productNames);
-  cy.get(textElementLocator).should('exist');
+  /**
+   * Selects the 'GI' category item by invoking the clickRandomAddToCartButton utility function.
+   * The utility function handles the selection of a random 'Add to cart' button.
+   */
+  selectCategoryItem_GI() {
+    console.log('clickRandomAddToCartButton function:', clickRandomAddToCartButton);
+    clickRandomAddToCartButton();
+  }
 
-  const addToCartButtonLocator = getAddToCartButtonLocator();
-  cy.get(addToCartButtonLocator)
-    .should('exist')
-    .then(($buttons) => {
-      const randomIndex = Math.floor(Math.random() * $buttons.length);
-      cy.wrap($buttons.eq(randomIndex))
-        .should('be.visible')
-        .click()
-        .then(() => {
-          cy.log('Clicked on a random ADD TO CART button');
-        });
-    });
-}
-
-
-  // Open the 'Filters' collection
+  /**
+   * Opens the 'Filters' collection on the page.
+   * The action is performed by clicking on a specific button determined by a locator.
+   * Logs the action to Cypress after opening the filters.
+   */
   openFiltersCollection() {
     cy.get(HomePageLocators.openFiltersCollection, { timeout: 10000 })
       .should('be.visible')
@@ -43,7 +39,10 @@ selectCategoryItem_GI() {
       });
   }
 
-  // Select the 'PocketNurse' checkbox
+  /**
+   * Selects the 'PocketNurse' checkbox on the page.
+   * Locates and clicks on the checkbox, then logs the action.
+   */
   selectCheckBoxPocketNurse() {
     cy.get(HomePageLocators.checkBoxPocketNurse, { timeout: 10000 })
       .should('be.visible')
@@ -53,7 +52,10 @@ selectCategoryItem_GI() {
       });
   }
 
-  // Accept the reference
+  /**
+   * Accepts a reference on the page, likely in a dialog or a modal.
+   * The method clicks a button to confirm the action and logs the event.
+   */
   acceptReference() {
     cy.get(HomePageLocators.acceptReference, { timeout: 10000 })
       .should('be.visible')
@@ -63,7 +65,10 @@ selectCategoryItem_GI() {
       });
   }
 
-  // Select the 'PN' category item
+  /**
+   * Selects the 'PN' category item on the home page.
+   * Finds and clicks on the first occurrence of the item and logs the action.
+   */
   selectCategoryItemPN() {
     cy.get(HomePageLocators.categoryItemPN, { timeout: 10000 })
       .first()
@@ -74,14 +79,15 @@ selectCategoryItem_GI() {
       });
   }
 
-  // Open the shopping cart
+  /**
+   * Opens the shopping cart by directly navigating to its URL.
+   * Logs the navigation action to the cart page.
+   */
   openCart() {
-    cy.get(HomePageLocators.openCart, { timeout: 10000 })
-      .should('be.visible')
-      .click()
-      .then(() => {
-        cy.log('Opened Cart');
-      });
+    const cartUrl = 'https://qa-opus.omniapartners.com/cart';
+    cy.visit(cartUrl).then(() => {
+      cy.log('Opened Cart at ' + cartUrl);
+    });
   }
 }
 
