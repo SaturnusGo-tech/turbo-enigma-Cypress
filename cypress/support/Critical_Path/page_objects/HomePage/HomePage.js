@@ -1,10 +1,26 @@
 import { HomePageLocators } from './HomePageLocators/HomePageLocators';
-import { clickRandomAddToCartButton } from '../../../../plugins/locatorUtility';
+import { clickRandomAddToCartButton } from '../../../../plugins/utils/locatorUtility';
 
 class HomePage {
+
+  checkImageVisibility() {
+  const imageUrl = HomePageLocators.imageUrl
+  // Проверяем, что изображение присутствует на странице и видимо
+  cy.get(`img[src="${imageUrl}"]`).should('exist').should('be.visible').then($img => {
+    if ($img.is(':visible')) {
+      cy.log('Image is visible on the page');
+    } else {
+      // Прокрутка страницы до изображения, если оно не видимо
+      cy.get(`img[src="${imageUrl}"]`).scrollIntoView().should('be.visible').then(() => {
+        cy.log('Image is visible after scrolling');
+      });
+    }
+  });
+}
+
   /**
    * Clicks on the 'Category Item' button on the home page.
-   * Uses a locator from HomePageLocators to find the button and performs a click operation.
+   * Uses a locator from Locators to find the button and performs a click operation.
    * Logs the action to Cypress after the click.
    */
   clickCategoryItemButton() {
@@ -31,7 +47,7 @@ class HomePage {
    * Logs the action to Cypress after opening the filters.
    */
   openFiltersCollection() {
-    cy.get(HomePageLocators.openFiltersCollection, { timeout: 10000 })
+    cy.xpath(HomePageLocators.openFiltersCollection, { timeout: 10000 })
       .should('be.visible')
       .click()
       .then(() => {
@@ -44,7 +60,7 @@ class HomePage {
    * Locates and clicks on the checkbox, then logs the action.
    */
   selectCheckBoxPocketNurse() {
-    cy.get(HomePageLocators.checkBoxPocketNurse, { timeout: 10000 })
+    cy.xpath(HomePageLocators.checkBoxPocketNurse, { timeout: 10000 })
       .should('be.visible')
       .click()
       .then(() => {
@@ -57,7 +73,7 @@ class HomePage {
    * The method clicks a button to confirm the action and logs the event.
    */
   acceptReference() {
-    cy.get(HomePageLocators.acceptReference, { timeout: 10000 })
+    cy.xpath(HomePageLocators.acceptReference, { timeout: 10000 })
       .should('be.visible')
       .click()
       .then(() => {
@@ -70,7 +86,7 @@ class HomePage {
    * Finds and clicks on the first occurrence of the item and logs the action.
    */
   selectCategoryItemPN() {
-    cy.get(HomePageLocators.categoryItemPN, { timeout: 10000 })
+    cy.xpath(HomePageLocators.categoryItemPN, { timeout: 10000 })
       .first()
       .should('be.visible')
       .click()
@@ -84,7 +100,7 @@ class HomePage {
    * Logs the navigation action to the cart page.
    */
   openCart() {
-    const cartUrl = 'https://qa-opus.omniapartners.com/cart';
+    const cartUrl = 'https://uat-opus.omniapartners.com/cart';
     cy.visit(cartUrl).then(() => {
       cy.log('Opened Cart at ' + cartUrl);
     });

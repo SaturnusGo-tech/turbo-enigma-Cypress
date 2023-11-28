@@ -33,21 +33,22 @@ describe('Login and Post-Login Tests', function() {
     // Verify successful login
     cy.wait(6000);
     cy.url().should('include', '/home');
-
+    homePage.checkImageVisibility();
     // Actions on Home Page
     // TODO: Ensure ClickCategoryItemButton has the correct selector and logic
-    homePage.ClickCategoryItemButton();
+    homePage.clickCategoryItemButton();
     // TODO: Ensure SelectCategoryItem_GI selects the correct category item
-    homePage.SelectCategoryItem_GI();
+    homePage.selectCategoryItem_GI();
     // TODO: Ensure OpenFiltersCollection opens the filter collection correctly
-    homePage.OpenFiltersCollection();
+    cy.wait(3000);
+    homePage.openFiltersCollection();
     // TODO: Verify that SelectCheckBoxPocketNurse checks the correct checkbox
-    homePage.SelectCheckBoxPocketNurse();
+    homePage.selectCheckBoxPocketNurse();
     // TODO: Implement AcceptReference if needed to confirm any references
-    homePage.AcceptReference();
+    homePage.acceptReference();
     // TODO: If necessary, implement SelectCategoryItemPN to select specific category items
     // homePage.SelectCategoryItemPN(); // Uncomment if needed
-    homePage.OpenCart();
+    homePage.openCart();
 
     // Verify the cart is not empty
     // TODO: Implement getAndStoreCartValue to get and store the cart value
@@ -55,7 +56,7 @@ describe('Login and Post-Login Tests', function() {
     // TODO: Replace 'cartPage.cartValue' with actual method to retrieve cart value
     // expect(cartPage.cartValue).to.be.greaterThan(0);
 
-    cartPage.OpenProceedCheckoutPage();
+    cartPage.openProceedCheckoutPage();
 
     // Actions on Shipping Page
     shippingPage.OpenShippingAddresses();

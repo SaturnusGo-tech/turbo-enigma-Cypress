@@ -9,7 +9,7 @@ export const ShippingPageLocators = {
      * XPath locator for selecting a specific shipping address.
      * This locator finds a button in a modal or dropdown, used in standard contexts.
      */
-    selectShippingAddress: '//*[@id="headlessui-dialog-2"]/div[2]/div/div/div[1]/div[1]/div[4]/div/div/div[2]/button',
+    selectShippingAddress: '//button[@type="button" and contains(@class, "font-roboto-condensed") and contains(text(), "Select")]',
 
     /**
      * XPath locator for selecting a shipping address in a web-specific context.
@@ -21,7 +21,7 @@ export const ShippingPageLocators = {
      * Fallback XPath locator for selecting a shipping address if the primary locator fails.
      * Targets an alternative button within the shipping address selection modal.
      */
-    IfNoFoundSelectThis: '//*[id="headlessui-dialog-2"]/div[2]/div/div/div[1]/div[1]/div[1]/div/div/div[2]/button',
+    IfNoFoundSelectThis: '//*[@id="headlessui-dialog-2"]/div[2]/div/div/div[1]/div[1]/div[2]/div/div/div[2]/button',
 
     /**
      * Fallback XPath locator for selecting a shipping address in a web context if the primary locator fails.

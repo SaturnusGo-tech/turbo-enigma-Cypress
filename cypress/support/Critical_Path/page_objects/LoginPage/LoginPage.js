@@ -33,7 +33,7 @@ class LoginPage {
   }
 
   /**
-   * Fills the email input field using the email locator from LoginPageLocators.
+   * Fills the email input field using the email locator from Locators.
    *
    * @param {string} email - The email address to be entered in the email field.
    */
@@ -42,7 +42,7 @@ class LoginPage {
   }
 
   /**
-   * Fills the password input field using the password locator from LoginPageLocators.
+   * Fills the password input field using the password locator from Locators.
    *
    * @param {string} password - The password to be entered in the password field.
    */

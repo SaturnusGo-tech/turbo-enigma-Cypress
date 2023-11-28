@@ -21,24 +21,20 @@ class ShippingPage {
      * If the primary locator fails to find the element, an alternative locator is used.
      * Waits for 1.5 seconds before attempting the action.
      */ // Select a specific shipping address
-SelectShippingAddress(IfNoFoundSelectThis) {
-  cy.wait(1500); // Wait for 1.5 seconds
+SelectShippingAddress() {
+    cy.wait(1500); // Ожидание 1.5 секунды
 
-  // Try to find and click the element using the primary locator
-  cy.xpath(ShippingPageLocators.selectShippingAddress, { timeout: 5000 })
-    .should('be.visible')
-    .click()
-    .then($el => {
-        cy.log(`Clicked on SelectShippingAddress with XPath: ${ShippingPageLocators.selectShippingAddress}`);
-    })
-    .then(null, error => {
-        // In case of an error, try using an alternative locator
-        cy.log('Primary locator not found, trying alternative locator.');
-        cy.xpath(ShippingPageLocators.IfNoFoundSelectThis).should('be.visible').click().then($alternativeEl => {
-            cy.log(`Clicked on alternative SelectShippingAddress with XPath: ${ShippingPageLocators.IfNoFoundSelectThis}`);
-        });
-    });
-    }
+    cy.xpath(ShippingPageLocators.selectShippingAddress, { timeout: 5000 })
+      .should('be.visible')
+      .then($buttons => {
+          // $buttons - это массив всех найденных кнопок
+          const randomIndex = Math.floor(Math.random() * $buttons.length); // Получение случайного индекса
+          cy.wrap($buttons[randomIndex]).click(); // Клик по случайной кнопке
+      })
+      .then($el => {
+          cy.log(`Clicked on a random SelectShippingAddress button.`);
+      });
+}
 
   /**
      * Similar to SelectShippingAddress but intended for a different context (e.g., web).
