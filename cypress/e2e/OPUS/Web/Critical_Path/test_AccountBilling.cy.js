@@ -4,7 +4,7 @@ import HomePage from '../../../../support/Critical_Path/page_objects/HomePage/Ho
 import CartPage from '../../../../support/Critical_Path/page_objects/CartPage/CartPage';
 import ShippingPage from '../../../../support/Critical_Path/page_objects/ShippingPage/ShippingPage';
 import BillingPageAccountBilling from '../../../../support/Critical_Path/page_objects/BillingPage/BillingPageAccountBilling';
-import TestData from '../../../../fixtures/Secret_variables/Test_data';
+import TestData from '../../../../fixtures/variables/Test_data';
 
 describe('Login and Post-Login Tests', function() {
   // Initializing Page Objects

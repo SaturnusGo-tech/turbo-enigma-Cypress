@@ -24,7 +24,7 @@ describe('Catalog Images Validation after Login', function () {
      * Test scenario to log in and validate catalog images.
      * Includes steps for logging in, interacting with UI elements, and verifying outcomes.
      */
-    it('Should login and then validate catalog images', function () {
+    it('Should login and then validate home page colors', function () {
         // Phase 1: Logging in
         cy.log('--- Starting Login Phase ---');
         loginPage.visit(); // Navigate to the login page
