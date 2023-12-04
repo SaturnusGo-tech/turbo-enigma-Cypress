@@ -9,7 +9,7 @@ import ShippingPage from '../../../../support/Critical_Path/page_objects/Shippin
 import BillingPageAccountBilling from '../../../../support/Critical_Path/page_objects/BillingPage/BillingPageAccountBilling';
 import BillingPageCreditCard from '../../../../support/Critical_Path/page_objects/BillingPage/BillingPageCreditCard';
 import GetBalancePopUp from '../../../../support/Critical_Path/page_objects/BillingPage/GetBalancePopUp/GetBalance';
-import TestData from '../../../../fixtures/variables/Test_data';
+import TestData from '../../../../fixtures/Secret_variables/Test_data';
 
 describe('Login and Post-Login Tests', function () {
   // Initializing Page Objects
