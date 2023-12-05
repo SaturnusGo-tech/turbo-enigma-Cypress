@@ -18,6 +18,7 @@ describe('Header items validations at authorized status', function () {
         // Clearing cookies and local storage to ensure a clean test environment
         cy.clearCookies();
         cy.clearLocalStorage();
+        cy.wait(10000);
 
         // Logging the start of the login phase
         cy.log('--- Starting Login Phase ---');

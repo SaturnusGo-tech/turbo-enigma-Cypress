@@ -5,7 +5,7 @@ import QuickConnect from '../../../../../support/objects/Quick connect/actions/a
 /**
  * Cypress test suite for validating catalog images after login.
  */
-describe('Suppliew quick connection after Login', function () {
+describe('Supplier quick connection after Login', function () {
     /**
      * Before each test, clears cookies and localStorage to reset the application state.
      */

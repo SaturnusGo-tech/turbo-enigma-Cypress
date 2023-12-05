@@ -2,7 +2,7 @@ import LoginPage from '../../../../../support/Critical_Path/page_objects/LoginPa
 import Actions from '../../../../../support/objects/Side bar/actions/actions';
 import TestData from '../../../../../fixtures/Secret_variables/Test_data';
 
-describe('Login and HomePage Tests', function() {
+describe('Side bar and HomePage Tests', function() {
     const loginPage = new LoginPage();
     const sideBarMenu = new Actions();
 

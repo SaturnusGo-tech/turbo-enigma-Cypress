@@ -2,7 +2,7 @@ import LoginPage from '../../../../../support/objects/LoginPage/actions/LoginPag
 import FooterValidator from '../../../../../support/objects/Footer/actions/actions';
 import TestData from "../../../../../fixtures/Secret_variables/Test_data";
 
-describe('Catalog Images Validation after Login', function () {
+describe('Footer Validation after Login', function () {
     beforeEach(() => {
         cy.viewport('macbook-15');
         cy.clearCookies();

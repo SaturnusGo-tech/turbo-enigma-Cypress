@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-12-05T19:34:07.199Z",
+    "end": "2023-12-05T19:34:53.252Z",
+    "duration": 46053,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "86db5529-0fce-413e-883f-055b9f4414de",
+      "title": "",
+      "fullFile": "cypress/e2e/OPUS/Mobile/test objects/Catalog/test_Catalog_scr_load.cy.js",
+      "file": "cypress/e2e/OPUS/Mobile/test objects/Catalog/test_Catalog_scr_load.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a5cc330a-1e0e-40fb-88d1-2d511491e679",
+          "title": "Catalog Images Validation after Login",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Should login and then validate catalog images",
+              "fullTitle": "Catalog Images Validation after Login Should login and then validate catalog images",
+              "timedOut": null,
+              "duration": 21020,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.log('--- Starting Login Phase ---');\n// Login Phase\ncy.log('Visiting login page...');\nloginPage.visit();\ncy.log('Filling in email...');\nloginPage.fillEmail(_Test_data.default.email);\ncy.log('Filling in password...');\nloginPage.fillPassword(_Test_data.default.password);\ncy.log('Clicking login button...');\nloginPage.clickLoginButton();\ncy.log('Checking for absence of error messages...');\nloginPage.checkNoErrorMessage();\n// Verify successful login\ncy.log('--- Verifying Successful Login ---');\ncy.url().should('include', '/home', {\n  timeout: 10000\n}); // Увеличение таймаута для ожидания перехода на страницу\ncy.log('Successfully logged in and redirected to home page.');\n// Catalog Validation\ncy.log('--- Starting Catalog Validation ---');\ncatalog.validateAllImages();\ncy.log('Catalog images validated.');",
+              "err": {},
+              "uuid": "c27effd3-9594-4950-b8c4-7573af2e76f6",
+              "parentUUID": "a5cc330a-1e0e-40fb-88d1-2d511491e679",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "c27effd3-9594-4950-b8c4-7573af2e76f6"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 21020,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

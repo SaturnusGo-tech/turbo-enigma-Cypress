@@ -14,8 +14,8 @@ export const Locators = {
     accountInfo: '//*[@id="app"]/div/nav/section/div[3]/a',
 
     profile: '//*[@id="app"]/div/nav/section/div/ul/li[1]/a',
-    Orders: '//*[@id="app"]/div/nav/section/div/ul/li[3]/a',
-    agency: '//*[@id="app"]/div/nav/section/div/ul/li[5]/button',
+    Orders: '//*[@href="/account/orders"]',
+    agency: '//*[@id="app"]/div/nav/section/div/ul/li[6]/button',
 
     linkedIn: '//*[@id="app"]/div/nav/div/div[1]/a[2]/img',
     youtube: '//*[@id="app"]/div/nav/div/div[1]/a[3]/img',

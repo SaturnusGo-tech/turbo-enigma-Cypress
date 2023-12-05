@@ -6,7 +6,7 @@ import TestData from "../../../../../fixtures/Secret_variables/Test_data";
  * Test suite for validating catalog images after a user logs in.
  * The tests cover login functionality and subsequent verification of catalog images.
  */
-describe('Catalog Images Validation after Login', function () {
+describe('Page color Validation after Login', function () {
     /**
      * Clear cookies and local storage before each test to reset the application state.
      */

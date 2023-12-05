@@ -2,7 +2,7 @@ import LoginPage from '../../../../../support/Critical_Path/page_objects/LoginPa
 import TestData from "../../../../../fixtures/Secret_variables/Test_data";
 import SupplierConnect from '../../../../../support/objects/Suppliers connect catalog/actions/actions';
 
-describe('Catalog Images Validation after Login', function () {
+describe('Supplier connect Validation after Login', function () {
     beforeEach(() => {
         // Clear cookies and localStorage before each test to ensure no residual data
         cy.clearCookies();

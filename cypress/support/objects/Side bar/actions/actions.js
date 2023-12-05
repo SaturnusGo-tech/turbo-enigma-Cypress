@@ -123,7 +123,6 @@ class Actions {
 
     locatorsArray.forEach((locator) => {
       cy.xpath(locator)
-        .scrollIntoView()
         .should('be.visible')
         .should('not.be.disabled')
         .then(($el) => {
