@@ -43,13 +43,13 @@ describe('Login and Post-Login Tests', function () {
 
     cy.log('Performing actions on the Home Page'); // Logging
     // Actions on the Home Page
-    homePage.ClickCategoryItemButton();
-    homePage.SelectCategoryItem_GI();
-    homePage.OpenFiltersCollection();
-    homePage.SelectCheckBoxPocketNurse();
-    homePage.AcceptReference();
-    //homePage.SelectCategoryItemPN();
-    homePage.OpenCart();
+    homePage.clickCategoryItemButton();
+    homePage.selectCategoryItem_GI();
+    homePage.openFiltersCollection();
+    homePage.selectCheckBoxPocketNurse();
+    homePage.acceptReference();
+    //homePage.selectCategoryItemPN();
+    homePage.openCart();
 
     cy.log('Verifying the cart is not empty'); // Logging
     // Check that cart is not empty
@@ -57,7 +57,7 @@ describe('Login and Post-Login Tests', function () {
     // expect(cartPage.cartValue).to.be.greaterThan(0);
 
     cy.log('Proceeding to checkout'); // Logging
-    cartPage.OpenProceedCheckoutPage();
+    cartPage.openProceedCheckoutPage();
 
     cy.log('Performing actions on the Shipping Page'); // Logging
     // Actions on the Shipping Page

@@ -40,18 +40,18 @@ describe('Login and Post-Login Tests', function () {
 
     // Actions on the Home Page
     // TODO: Implement ClickCategoryItemButton in HomePage class
-    homePage.ClickCategoryItemButton();
+    homePage.clickCategoryItemButton();
     // TODO: Implement SelectCategoryItem_GI in HomePage class
-    homePage.SelectCategoryItem_GI();
+    homePage.selectCategoryItem_GI();
     // TODO: Implement OpenFiltersCollection in HomePage class
-     homePage.OpenFiltersCollection();
+     homePage.openFiltersCollection();
     // TODO: Implement SelectCheckBoxPocketNurse in HomePage class
-     homePage.SelectCheckBoxPocketNurse();
+     homePage.selectCheckBoxPocketNurse();
     // TODO: Implement AcceptReference in HomePage class
     // homePage.SelectCategoryItemPN(); //
-    homePage.AcceptReference();
+    homePage.acceptReference();
     // TODO: Implement OpenCart in HomePage class
-    homePage.OpenCart();
+    homePage.openCart();
 
 
     // Verify the cart is not empty
@@ -61,7 +61,7 @@ describe('Login and Post-Login Tests', function () {
     // expect(cartPage.cartValue).to.be.greaterThan(0);
 
     // Proceed to checkout
-    cartPage.OpenProceedCheckoutPage();
+    cartPage.openProceedCheckoutPage();
 
     // Actions on the Shipping Page
     shippingPage.OpenShippingAddresses();

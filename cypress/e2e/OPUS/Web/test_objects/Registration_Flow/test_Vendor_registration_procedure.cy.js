@@ -1,4 +1,4 @@
-import Supplier_Enrollment_Flow_Verification from '../../../../support/objects/Supplier Enrollment Flow Verification/Supplier_Registration_Actions/Registration';
+import Supplier_Enrollment_Flow_Verification from '../../../../../support/objects/Request access/actions/actions';
 import LoginPage from "../../../../../support/Critical_Path/page_objects/LoginPage/LoginPage";
 
 // Test suite for Vendor Registration Procedure
