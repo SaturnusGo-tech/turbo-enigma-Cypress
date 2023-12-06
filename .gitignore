@@ -1,14 +1,15 @@
-# Исключаем папку node_modules
+# Exclude the node_modules folder
 node_modules/
 
-# Исключаем скриншоты и видео сессий Cypress
+# Exclude screenshots and videos of Cypress sessions
 cypress/screenshots/
 cypress/videos/
 
-# Исключаем папки с собранными файлами
+# Exclude folders with collected files
 build/
 dist/
 
-# Исключаем папку с кэшем
+# Exclude cash dir
 .cache/
 
+reports/
