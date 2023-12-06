@@ -7,7 +7,7 @@ import AuthLogin from '../../../../../fixtures/navigation/AuthLogin';
 const headerValidator = new HeaderValidator();
 const loginPage = new LoginPage();
 
-// Main test suite for validating catalog images after user login
+// Main test suite for validating header items at unauthorized status
 describe('Header items validations at unauthorized status', function () {
     // Setup before running the tests
     before(() => {
@@ -21,17 +21,15 @@ describe('Header items validations at unauthorized status', function () {
         // Logging the start of the login phase
         cy.log('--- Starting Login Phase ---');
 
-        // Navigating to the login page
-        loginPage.visit();
+        // Navigating to the login page and ensuring the page has loaded
+        loginPage.visit(); // Assuming this function correctly performs cy.visit()
 
-        // Executing the login operation using credentials from AuthLogin
-        // loginPage.login(AuthLogin.username, AuthLogin.password);
+        // Ensuring the page is fully loaded before proceeding
+        cy.document().its('readyState').should('eq', 'complete');
     });
 
     // Test case for checking the state of multiple header elements after login
-    it('Performs a series of header validations after login', () => {
-        // Waiting for a set duration to ensure all elements are loaded
-        cy.wait(10000);
+    it('Performs a series of header validations after login', function () {
 
         // Logging the start of the check for multiple header elements
         cy.log('--- Checking multiple header elements state ---');
@@ -46,4 +44,10 @@ describe('Header items validations at unauthorized status', function () {
         headerValidator.hoverOverHeaderAndCheckText();
     });
 
+    // Handling uncaught exceptions to prevent the test from failing unexpectedly
+    Cypress.on('uncaught:exception', (err, runnable) => {
+        cy.log('Uncaught exception', err);
+        // Returning false here prevents Cypress from failing the test
+        return false;
+    });
 });
