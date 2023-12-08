@@ -4,6 +4,7 @@ import HomePage from '../../../../support/Critical_Path/page_objects/HomePage/Ho
 import CartPage from '../../../../support/Critical_Path/page_objects/CartPage/CartPage';
 import ShippingPage from '../../../../support/Critical_Path/page_objects/ShippingPage/ShippingPage';
 import BillingPageAccountBilling from '../../../../support/Critical_Path/page_objects/BillingPage/BillingPageAccountBilling';
+import TextComparator from '../../../../support/objects/orders/actions/actions';
 import TestData from '../../../../fixtures/Secret_variables/Test_data';
 
 describe('Login and Post-Login Tests', function() {
@@ -13,6 +14,7 @@ describe('Login and Post-Login Tests', function() {
   const cartPage = new CartPage();
   const shippingPage = new ShippingPage();
   const billingPageAccountBilling = new BillingPageAccountBilling();
+  const textComparator = new TextComparator();
 
   // Clear cookies and local storage before each test
   beforeEach(() => {
@@ -55,5 +57,8 @@ describe('Login and Post-Login Tests', function() {
     billingPageAccountBilling.ReviewOrderButton(); // Clicks the review order button
     billingPageAccountBilling.PlaceOrderButton(); // Clicks the place order button
     billingPageAccountBilling.checkElementAndCompleteTest(); // Checks an element and concludes the test
+
+    cy.wait(15000);
+    textComparator.compareTextAndNavigate();
   });
 });
