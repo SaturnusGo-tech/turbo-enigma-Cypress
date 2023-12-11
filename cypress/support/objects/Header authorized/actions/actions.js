@@ -65,7 +65,10 @@ class HeaderValidator {
                 cy.xpath(locator).click();
             } else {
                 // Clicking on each href element found
-                cy.get(`a[href="${locator}"]`).click({ multiple: true });
+               cy.get(`a[href="${locator}"]`, { timeout: 10000 }).should('be.visible').each(($el) => {
+    cy.wrap($el).click();
+});
+
             }
 
             // Verifying the status of the response after navigation

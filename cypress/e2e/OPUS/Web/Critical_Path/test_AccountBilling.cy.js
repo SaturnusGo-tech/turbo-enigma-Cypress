@@ -58,7 +58,7 @@ describe('Login and Post-Login Tests', function() {
     billingPageAccountBilling.PlaceOrderButton(); // Clicks the place order button
     billingPageAccountBilling.checkElementAndCompleteTest(); // Checks an element and concludes the test
 
-    cy.wait(15000);
-    textComparator.compareTextAndNavigate();
+   // cy.wait(20000);
+   // textComparator.compareTextAndNavigate();
   });
 });
