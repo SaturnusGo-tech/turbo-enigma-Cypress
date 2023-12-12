@@ -1,0 +1,14 @@
+{
+    "qa": {
+        "url": "https://qa-opus.omniapartners.com/",
+        "locatorPrefix": "qa-opus."
+    },
+    "uat": {
+        "url": "https://uat-opus.omniapartners.com/",
+        "locatorPrefix": "uat-opus."
+    },
+    "demo": {
+        "url": "https://demo-opus.omniapartners.com/",
+        "locatorPrefix": "demo-opus."
+    }
+}

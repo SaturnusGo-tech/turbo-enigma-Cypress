@@ -1,6 +1,6 @@
 class TestData {
     constructor() {
-        this.email = 'secondsomeschllast@test.com';
+        this.email = 'test549854545@test.com';
         this.password = '1234567Test!';
     }
 }

@@ -100,7 +100,7 @@ class HomePage {
    * Logs the navigation action to the cart page.
    */
   openCart() {
-    const cartUrl = 'https://uat-opus.omniapartners.com/cart';
+    const cartUrl = 'https://qa-opus.omniapartners.com/cart';
     cy.visit(cartUrl).then(() => {
       cy.log('Opened Cart at ' + cartUrl);
     });
