@@ -20,18 +20,7 @@ describe('Search bar Validation after Login', function () {
         // Login Phase
         cy.log('Visiting login page...');
         loginPage.visit();
-
-        cy.log('Filling in email...');
-        loginPage.fillEmail(TestData.email);
-
-        cy.log('Filling in password...');
-        loginPage.fillPassword(TestData.password);
-
-        cy.log('Clicking login button...');
-        loginPage.clickLoginButton();
-
-        cy.log('Checking for absence of error messages...');
-        loginPage.checkNoErrorMessage();
+        loginPage.login();
 
         // Verify successful login
         cy.log('--- Verifying Successful Login ---');

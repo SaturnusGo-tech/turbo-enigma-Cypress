@@ -1,5 +1,5 @@
-// Importing necessary Page Objects for the test
-import LoginPage from '../../../../support/Critical_Path/page_objects/LoginPage/LoginPage';
+// Importing necessary Page Objects and test data
+import LoginPage from '../../../../support/objects/LoginPage/actions/LoginPage';
 import HomePage from '../../../../support/Critical_Path/page_objects/HomePage/HomePage';
 import CartPage from '../../../../support/Critical_Path/page_objects/CartPage/CartPage';
 import ShippingPage from '../../../../support/Critical_Path/page_objects/ShippingPage/ShippingPage';
@@ -7,8 +7,11 @@ import BillingPageAccountBilling from '../../../../support/Critical_Path/page_ob
 import TextComparator from '../../../../support/objects/orders/actions/actions';
 import TestData from '../../../../fixtures/Secret_variables/Test_data';
 
+/**
+ * Test suite focusing on the login process and subsequent user actions on various pages.
+ */
 describe('Login and Post-Login Tests', function() {
-  // Initializing Page Objects
+  // Initializing instances of Page Objects for ease of use
   const loginPage = new LoginPage();
   const homePage = new HomePage();
   const cartPage = new CartPage();
@@ -16,49 +19,48 @@ describe('Login and Post-Login Tests', function() {
   const billingPageAccountBilling = new BillingPageAccountBilling();
   const textComparator = new TextComparator();
 
-  // Clear cookies and local storage before each test
+  // Clearing cookies and local storage before each test to ensure a clean state
   beforeEach(() => {
     cy.clearCookies();
     cy.clearLocalStorage();
   });
 
-  // Test for logging in and then performing a series of actions
+  /**
+   * Main test case to perform login and then execute a series of actions across different pages.
+   * This includes navigating through home, cart, shipping, and billing pages and interacting with various elements.
+   */
   it('Should login and then perform actions', function() {
-    // Login Phase
-    loginPage.visit(); // Navigates to the login page
-    loginPage.fillEmail(TestData.email); // Fills in the email field
-    loginPage.fillPassword(TestData.password); // Fills in the password field
-    loginPage.clickLoginButton(); // Clicks the login button
-    loginPage.checkNoErrorMessage(); // Checks for the absence of error messages
+    // Phase 1: Login
+    loginPage.visit(); // Navigating to the login page
+    loginPage.login(); // Performing login actions
+    cy.url().should('include', '/home'); // Verifying successful login by checking the URL
 
-    // Verify successful login
-    cy.url().should('include', '/home'); // Verifies that URL includes '/home', indicating a successful login
+    // Phase 2: Interactions on Home Page
+    homePage.clickCategoryItemButton(); // Clicking on a category item button on the home page
+    homePage.selectCategoryItem_GI(); // Selecting a specific category item
+    cy.wait(5000); // Waiting to ensure elements are loaded
+    homePage.openCart(); // Opening the cart
 
-    // Actions on Home Page
-    homePage.clickCategoryItemButton(); // Clicks the category item button
-    homePage.selectCategoryItem_GI(); // Selects a specific category item
-    cy.wait(5000); // Waits for 5 seconds
-    homePage.openCart(); // Opens the cart
+    // Phase 3: Actions on Cart Page
+    cartPage.openProceedCheckoutPage(); // Navigating to the checkout page from the cart
 
-    // Verifying the cart and proceeding to checkout
-    cartPage.openProceedCheckoutPage(); // Navigates to the checkout page
+    // Phase 4: Interactions on Shipping Page
+    shippingPage.OpenShippingAddresses(); // Opening the list of available shipping addresses
+    shippingPage.SelectShippingAddressWeb(); // Choosing a specific shipping address
+    shippingPage.AcceptShippingAddress(); // Confirming the selected shipping address
+    shippingPage.OpenDeliverAddress(); // Accessing delivery address options
+    shippingPage.SelectDeliveryMethodWeb(); // Selecting a delivery method
+    shippingPage.GoNextToBillingPage(); // Proceeding to the billing page
 
-    // Actions on Shipping Page
-    shippingPage.OpenShippingAddresses(); // Opens the list of shipping addresses
-    shippingPage.SelectShippingAddressWeb(); // Selects a specific shipping address
-    shippingPage.AcceptShippingAddress(); // Confirms the shipping address
-    shippingPage.OpenDeliverAddress(); // Opens delivery address options
-    shippingPage.SelectDeliveryMethodWeb(); // Selects a delivery method
-    shippingPage.GoNextToBillingPage(); // Navigates to the billing page
+    // Phase 5: Actions on Billing Page
+    billingPageAccountBilling.OpenPaymentMethod(); // Accessing the payment method section
+    billingPageAccountBilling.SelectPaymentMethodCreditCard(); // Choosing credit card as the payment method
+    billingPageAccountBilling.ReviewOrderButton(); // Reviewing the order
+    billingPageAccountBilling.PlaceOrderButton(); // Placing the order
+    billingPageAccountBilling.checkElementAndCompleteTest(); // Performing a final check and concluding the test
 
-    // Actions on Billing Page
-    billingPageAccountBilling.OpenPaymentMethod(); // Opens the payment method section
-    billingPageAccountBilling.SelectPaymentMethodCreditCard(); // Selects credit card as payment method
-    billingPageAccountBilling.ReviewOrderButton(); // Clicks the review order button
-    billingPageAccountBilling.PlaceOrderButton(); // Clicks the place order button
-    billingPageAccountBilling.checkElementAndCompleteTest(); // Checks an element and concludes the test
-
-   // cy.wait(20000);
-   // textComparator.compareTextAndNavigate();
+    // Additional interactions and text comparison can be added here if needed
+    // cy.wait(20000);
+    // textComparator.compareTextAndNavigate();
   });
 });

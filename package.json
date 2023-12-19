@@ -7,9 +7,12 @@
     "test": "cypress run",
     "coverage": "nyc report --reporter=lcov && nyc report --reporter=text-summary",
     "open": "cypress open",
-    "test:qa": "CYPRESS_ENV=qa cypress run",
-    "test:uat": "CYPRESS_ENV=uat cypress run",
-    "test:demo": "CYPRESS_ENV=demo cypress run"
+   "test:qa": "cypress open --env envName=qa",
+  "test:uat": "cypress open --env envName=uat",
+  "test:demo": "cypress open --env envName=demo",
+    "testHeadless:qa": "cypress run --env envName=qa",
+  "testHeadless:uat": "cypress run --env envName=uat",
+  "testHeadless:demo": "cypress run --env envName=demo"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +22,7 @@
     "@cypress/code-coverage": "^3.12.9",
     "@istanbuljs/nyc-config-babel": "^3.0.0",
     "babel-plugin-istanbul": "^6.1.1",
+    "cross-env": "^7.0.3",
     "cypress": "^13.6.1",
     "cypress-xpath": "^2.0.1",
     "istanbul-lib-coverage": "^3.2.1",

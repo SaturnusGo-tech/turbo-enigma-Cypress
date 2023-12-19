@@ -20,7 +20,5 @@ describe('Vendor registration procedure test', function() {
         // Start the registration process
         supplier_Enrollment_Flow_Verification.CompleteRegistration();
 
-        // Post-registration verification
-        // Additional validation steps will be implement here
     });
 });

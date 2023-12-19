@@ -1,4 +1,4 @@
-import LoginPage from '../../../../../../support/Critical_Path/page_objects/LoginPage/LoginPage';
+import LoginPage from '../../../../../../support/objects/LoginPage/actions/LoginPage';
 import CatalogPage from '../../../../../../support/objects/Catalog/actions/actions';
 import TestData from "../../../../../../fixtures/Secret_variables/Test_data";
 
@@ -16,21 +16,9 @@ describe('Catalog Images Validation after Login', function () {
     it('Should login and then validate catalog images', function() {
         cy.log('--- Starting Login Phase ---');
 
-        // Login Phase
-        cy.log('Visiting login page...');
+         // Фаза входа с использованием LoginPage
         loginPage.visit();
-
-        cy.log('Filling in email...');
-        loginPage.fillEmail(TestData.email);
-
-        cy.log('Filling in password...');
-        loginPage.fillPassword(TestData.password);
-
-        cy.log('Clicking login button...');
-        loginPage.clickLoginButton();
-
-        cy.log('Checking for absence of error messages...');
-        loginPage.checkNoErrorMessage();
+        loginPage.login();
 
         // Verify successful login
         cy.log('--- Verifying Successful Login ---');

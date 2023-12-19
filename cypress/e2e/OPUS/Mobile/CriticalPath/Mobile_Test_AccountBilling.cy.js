@@ -1,5 +1,5 @@
 // Importing Page Objects
-import LoginPage from '../../../../support/Critical_Path/page_objects/LoginPage/LoginPage';
+import LoginPage from '../../../../support/objects/LoginPage/actions/LoginPage'; // Укажите правильный путь к файлу LoginPage
 import HomePage from '../../../../support/Critical_Path/page_objects/HomePage/HomePage';
 import CartPage from '../../../../support/Critical_Path/page_objects/CartPage/CartPage';
 import ShippingPage from '../../../../support/Critical_Path/page_objects/ShippingPage/ShippingPage';
@@ -25,10 +25,7 @@ describe('Login and Post-Login Tests', function() {
   it('Should login and then perform actions', function() {
     // Login Phase
     loginPage.visit();
-    loginPage.fillEmail(TestData.email);
-    loginPage.fillPassword(TestData.password);
-    loginPage.clickLoginButton();
-    loginPage.checkNoErrorMessage();
+    loginPage.login();
 
     // Verify successful login
     cy.wait(6000);

@@ -1,6 +1,7 @@
-import LoginPage from '../../../../../support/Critical_Path/page_objects/LoginPage/LoginPage';
+import LoginPage from '../../../../../support/objects/LoginPage/actions/LoginPage'; // Укажите правильный путь к файлу LoginPage
 import TestData from "../../../../../fixtures/Secret_variables/Test_data";
 import QuickConnect from '../../../../../support/objects/Quick connect/actions/actions';
+import AuthLogin from '../../../../fixtures/navigation/AuthLogin';
 
 /**
  * Cypress test suite for validating catalog images after login.
@@ -24,25 +25,8 @@ describe('Supplier quick connection after Login', function () {
      */
     it('Should login and then validate supplier connect', function () {
         // Phase 1: Logging in
-        cy.log('--- Starting Login Phase ---');
-
-        cy.log('Visiting login page...');
-        loginPage.visit(); // Navigate to the login page
-
-        cy.log('Filling in email...');
-        loginPage.fillEmail(TestData.email); // Enter email in the login form
-
-        cy.log('Filling in password...');
-        loginPage.fillPassword(TestData.password); // Enter password in the login form
-
-        cy.log('Clicking login button...');
-        loginPage.clickLoginButton(); // Trigger the login process
-
-        cy.log('Checking for absence of error messages...');
-        loginPage.checkNoErrorMessage(); // Ensure no login errors are displayed
-
-        // Phase 2: Verification after successful login
-        cy.log('--- Verifying Successful Login ---');
+        loginPage.visit();
+        loginPage.login();
         // Check the URL to confirm redirection to the home page after login
         cy.url().should('include', '/home', {timeout: 10000});
         cy.log('Successfully logged in and redirected to home page.');

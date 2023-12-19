@@ -1,45 +1,45 @@
+// Importing necessary page objects and test data
 import LoginPage from '../../../../../support/Critical_Path/page_objects/LoginPage/LoginPage';
 import TestData from "../../../../../fixtures/Secret_variables/Test_data";
 import SupplierConnect from '../../../../../support/objects/Suppliers connect catalog/actions/actions';
 
+/**
+ * Test suite focusing on the validation of supplier connect functionality after user login.
+ */
 describe('Supplier connect Validation after Login', function () {
+    /**
+     * Setup actions to be performed before each test.
+     * This includes clearing cookies and local storage to ensure a clean testing environment.
+     */
     beforeEach(() => {
-        // Clear cookies and localStorage before each test to ensure no residual data
-        cy.clearCookies();
-        cy.clearLocalStorage();
+        cy.clearCookies(); // Clearing all cookies for a clean state
+        cy.clearLocalStorage(); // Clearing local storage data
     });
 
-    // Initializing Page Objects
+    // Initializing instances of Page Objects for reusable functionality
     const loginPage = new LoginPage();
     const supplier = new SupplierConnect();
 
-    // Main Test Scenario
-    it('Should login and then validate catalog images', function () {
-        cy.log('--- Starting Login Phase ---');
+    /**
+     * Main test case to perform login and validate supplier connect catalog functionality.
+     * This test includes steps for logging in and verifying the functionality related to supplier connect.
+     */
+    it('Should login and then validate supplier connect catalog', function () {
+        cy.log('--- Starting Login Phase ---'); // Logging the start of the login phase
 
         // Login Phase
-        cy.log('Visiting login page...');
-        loginPage.visit();
+        cy.log('Visiting login page...'); // Logging the action of visiting the login page
+        loginPage.visit(); // Navigating to the login page
+        loginPage.login(); // Executing login steps
 
-        cy.log('Filling in email...');
-        loginPage.fillEmail(TestData.email);
-
-        cy.log('Filling in password...');
-        loginPage.fillPassword(TestData.password);
-
-        cy.log('Clicking login button...');
-        loginPage.clickLoginButton();
-
-        cy.log('Checking for absence of error messages...');
-        loginPage.checkNoErrorMessage();
-
-        // Verify successful login
-        cy.log('--- Verifying Successful Login ---');
-        // Increase timeout to wait for page navigation
-        cy.url().should('include', '/home', {timeout: 10000});
+        // Verifying successful login
+        cy.log('--- Verifying Successful Login ---'); // Logging the verification of successful login
+        cy.url().should('include', '/home', {timeout: 10000}); // Confirming redirection to the home page post-login
         cy.log('Successfully logged in and redirected to home page.');
 
-        // Perform actions to validate catalog images
-        supplier.RevertCatalogsData();
+        // Supplier Connect Catalog Validation Phase
+        cy.log('--- Starting Supplier Connect Catalog Validation ---'); // Logging the start of supplier connect validation
+        supplier.RevertCatalogsData(); // Performing actions to revert or validate supplier catalogs
+        // Additional steps or assertions can be added here to further validate supplier connect functionality
     });
 });

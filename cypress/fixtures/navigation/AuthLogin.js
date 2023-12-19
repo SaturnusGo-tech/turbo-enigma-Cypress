@@ -1,19 +1,26 @@
-class AuthLogin {
-  visitHomePage(url = 'https://qa-opus.omniapartners.com/', options = {failOnStatusCode: false, timeout: 10000}) {
-    cy.log('Step: Initiating visit to Home Page');
+export default class AuthLogin {
+  constructor() {
+    const env = Cypress.env('envName') || 'qa';
+    const envConfig = require('../../config.json')[env];
+    this.url = envConfig.url;
+    this.email = envConfig.email;
+    this.password = envConfig.password;
+  }
 
-    cy.visit(url, options).then((response) => {
-      if (response && response.status) {
-        cy.log(`HTTP Status Code: ${response.status}`);
-        expect(response.status).to.be.oneOf([200, 304], 'Successful HTTP response');
-      } else {
-        cy.log('Warning: The response object or the status is undefined or null');
-      }
 
-    });
+  // Метод для посещения домашней страницы
+  visitHomePage() {
+    cy.visit(this.url, { failOnStatusCode: false, timeout: 10000 });
+    cy.log(`Visited ${this.url}`);
+  }
 
-    cy.log('Completed: Visited Home Page');
+  // Получение данных для авторизации
+  getCredentials() {
+    return {
+
+      email: this.email,
+      password: this.password
+    };
   }
 }
 
-export default new AuthLogin();

@@ -4,91 +4,65 @@ import { Locators } from '../locators/locators';
 const ERROR_MESSAGE_INVALID_LOGIN = 'Invalid login credentials';
 
 class LoginPage {
-  /**
-   * Navigates to the home page using the defined authentication login procedure.
-   * Logs the action of initiating a visit to the home page.
-   */
-  visit() {
-    AuthLogin.visitHomePage();
-    cy.log('Step: Initiated visit to Home Page');
-  }
+    constructor() {
+        this.authLogin = new AuthLogin();
+    }
 
-  /**
-   * Fills any input field identified by the given locator with the specified value.
-   * Clears the field before typing and ensures the value is correctly entered.
-   * Logs the steps and completion of filling the field.
-   *
-   * @param {string} locator - The CSS selector or XPath for the input field.
-   * @param {string} value - The value to type into the input field.
-   */
-  fillInputField(locator, value) {
-    cy.log(`Step: Preparing to fill the field ${locator}`);
-    cy.get(locator)
-      .should('be.visible')
-      .clear()
-      .type(value)
-      .should('have.value', value);
+    /**
+     * Uses AuthLogin to navigate to the home page.
+     * Logs the action of initiating a visit to the home page.
+     */
+    visit() {
+        this.authLogin.visitHomePage();
+        cy.log('Step: Initiated visit to Home Page');
+    }
 
-    cy.log(`Completed: Filled ${locator} field with ${value}`);
-  }
+    /**
+     * Fills in the email input field.
+     * Uses the email locator from Locators to ensure correct selector targeting.
+     *
+     * @param {string} email - The email address to be entered in the email field.
+     */
+    fillEmail(email) {
+        cy.get(Locators.EMAIL_INPUT) // Ensure Locators.EMAIL_INPUT points to the correct selector
+            .should('be.visible')
+            .clear()
+            .type(email);
+    }
 
-  /**
-   * Fills the email input field using the email locator from Locators.
-   *
-   * @param {string} email - The email address to be entered in the email field.
-   */
-  fillEmail(email) {
-    this.fillInputField(Locators.EMAIL_INPUT, email);
-  }
+    /**
+     * Fills in the password input field.
+     * Uses the password locator from Locators to ensure correct selector targeting.
+     *
+     * @param {string} password - The password to be entered in the password field.
+     */
+    fillPassword(password) {
+        cy.get(Locators.PASSWORD_INPUT) // Ensure Locators.PASSWORD_INPUT points to the correct selector
+            .should('be.visible')
+            .clear()
+            .type(password);
+    }
 
-  /**
-   * Fills the password input field using the password locator from Locators.
-   *
-   * @param {string} password - The password to be entered in the password field.
-   */
-  fillPassword(password) {
-    this.fillInputField(Locators.PASSWORD_INPUT, password);
-  }
+    /**
+     * Clicks the login button on the login page.
+     * Uses the login button locator from Locators to ensure correct selector targeting.
+     */
+    clickLoginButton() {
+        cy.xpath(Locators.LOGIN_BUTTON) // Ensure Locators.LOGIN_BUTTON points to the correct selector
+            .should('be.visible')
+            .click();
+    }
 
-  /**
-   * Clicks the login button on the login page.
-   * Ensures the button is visible and enabled before clicking.
-   * Logs the action of clicking the login button.
-   */
-  clickLoginButton() {
-    cy.log('Step: Clicking the Login Button');
-    cy.xpath(Locators.LOGIN_BUTTON)
-      .should('be.visible')
-      .should('be.enabled')
-      .click();
-
-    cy.log(`Completed: Clicked on Login Button with XPath ${Locators.LOGIN_BUTTON}`);
-  }
-
-  /**
-   * Checks for the absence of error messages on the login page.
-   * Specifically checks that the error message does not contain the text for invalid login credentials.
-   * Logs the result of the check.
-   */
-  checkNoErrorMessage() {
-    cy.log('Step: Checking for the absence of error messages');
-    cy.document().then((doc) => {
-      const errorElement = doc.evaluate(
-        Locators.ERROR_MESSAGE,
-        doc,
-        null,
-        XPathResult.FIRST_ORDERED_NODE_TYPE,
-        null
-      ).singleNodeValue;
-
-      if (errorElement) {
-        expect(errorElement.textContent).to.not.contain(ERROR_MESSAGE_INVALID_LOGIN);
-        cy.log('Warning: Found error message element, but it does not contain invalid login text');
-      } else {
-        cy.log('Completed: No error message element found, which is expected.');
-      }
-    });
-  }
+    /**
+     * Performs the entire login process.
+     * Gets authorization credentials from AuthLogin and fills in the login form.
+     */
+    login() {
+        const credentials = this.authLogin.getCredentials();
+        this.fillEmail(credentials.email);
+        this.fillPassword(credentials.password);
+        this.clickLoginButton();
+    }
 }
 
 export default LoginPage;

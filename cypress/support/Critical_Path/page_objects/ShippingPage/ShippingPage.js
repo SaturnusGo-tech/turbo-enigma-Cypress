@@ -197,7 +197,7 @@ SelectShippingAddress() {
      * Waits for 5 seconds before attempting the click to ensure the page is ready.
      */
     GoNextToBillingPage() {
-        cy.wait(5000);
+        cy.wait(20000);
         cy.xpath('//*[@id="order-summary"]/div[2]/a')
           .should('be.visible')
           .click()

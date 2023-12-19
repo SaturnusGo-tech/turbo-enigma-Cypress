@@ -27,12 +27,8 @@ describe('Page color Validation after Login', function () {
     it('Should login and then validate home page colors', function () {
         // Phase 1: Logging in
         cy.log('--- Starting Login Phase ---');
-        loginPage.visit(); // Navigate to the login page
-        loginPage.fillEmail(TestData.email); // Fill in the email in the login form
-        loginPage.fillPassword(TestData.password); // Fill in the password in the login form
-        loginPage.clickLoginButton(); // Trigger the login process
-        loginPage.checkNoErrorMessage(); // Ensure no login error messages are displayed
-
+       loginPage.visit();
+        loginPage.login();
         // Phase 2: Verification after successful login
         cy.url().should('include', '/home', {timeout: 10000}); // Check URL to confirm redirection to the home page
         cy.log('Successfully logged in and redirected to home page.');

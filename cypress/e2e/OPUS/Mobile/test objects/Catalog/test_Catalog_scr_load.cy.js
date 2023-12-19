@@ -1,47 +1,46 @@
+// Importing necessary page objects and test data
 import LoginPage from '../../../../../support/Critical_Path/page_objects/LoginPage/LoginPage';
 import CatalogPage from '../../../../../support/objects/Catalog/actions/actions';
 import TestData from "../../../../../fixtures/Secret_variables/Test_data";
 
+/**
+ * Test suite for validating the appearance and functionality of catalog images after user login.
+ */
 describe('Catalog Images Validation after Login', function () {
+    /**
+     * Setup actions to be performed before each test.
+     */
     beforeEach(() => {
-         cy.log('Setting viewport to 414x896'); // Logging
-        cy.viewport(414, 896); // Set viewport resolution
+        cy.log('Setting viewport to 414x896'); // Logging the viewport setup
+        cy.viewport(414, 896); // Setting viewport resolution to simulate a specific device
+
+        // Clearing cookies and local storage to ensure a clean testing state
         cy.clearCookies();
         cy.clearLocalStorage();
     });
 
-    // Initializing Page Objects
+    // Initializing instances of Page Objects for reusability
     const loginPage = new LoginPage();
     const catalog = new CatalogPage();
 
-    // Main Test Scenario
+    /**
+     * Main test case to validate the display and functionality of catalog images post-login.
+     */
     it('Should login and then validate catalog images', function() {
-        cy.log('--- Starting Login Phase ---');
+        cy.log('--- Starting Login Phase ---'); // Logging the start of the login phase
 
-        // Login Phase
-        cy.log('Visiting login page...');
-        loginPage.visit();
+        // Performing login actions
+        loginPage.visit(); // Navigating to the login page
+        loginPage.login(); // Executing login steps
 
-        cy.log('Filling in email...');
-        loginPage.fillEmail(TestData.email);
-
-        cy.log('Filling in password...');
-        loginPage.fillPassword(TestData.password);
-
-        cy.log('Clicking login button...');
-        loginPage.clickLoginButton();
-
-        cy.log('Checking for absence of error messages...');
-        loginPage.checkNoErrorMessage();
-
-        // Verify successful login
+        // Verifying successful login
         cy.log('--- Verifying Successful Login ---');
-        cy.url().should('include', '/home', { timeout: 10000 }); // Увеличение таймаута для ожидания перехода на страницу
+        cy.url().should('include', '/home', { timeout: 10000 }); // Verifying redirection to the home page post-login
         cy.log('Successfully logged in and redirected to home page.');
 
-        // Catalog Validation
+        // Catalog image validation phase
         cy.log('--- Starting Catalog Validation ---');
-        catalog.validateAllImages();
-        cy.log('Catalog images validated.');
+        catalog.validateAllImages(); // Validating the appearance and loading of catalog images
+        cy.log('Catalog images validated.'); // Logging the completion of catalog validation
     });
 });
