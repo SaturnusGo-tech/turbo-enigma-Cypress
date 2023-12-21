@@ -1,7 +1,7 @@
 // locators.js
 
 const Locators = {
-    Header: '//*[@id="app"]/div/div[1]'
+    Header: 'flex h-[39px] items-center gap-x-5 border-[color:var(--color-primary)] bg-[color:var(--color-header-top-bg)] px-5 text-sm text-[color:var(--color-header-top-text)] xl:px-12 relative z-[21] print:hidden'
 };
 
 const EnabledHeaderItems = [

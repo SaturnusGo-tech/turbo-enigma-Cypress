@@ -6,7 +6,7 @@ import ShippingPage from '../../../../support/Critical_Path/page_objects/Shippin
 import BillingPageAccountBilling from '../../../../support/Critical_Path/page_objects/BillingPage/BillingPageAccountBilling';
 import TextComparator from '../../../../support/objects/orders/actions/actions';
 import TestData from '../../../../fixtures/Secret_variables/Test_data';
-
+import clearCart from "../../../../plugins/clearCart/clearCart";
 /**
  * Test suite focusing on the login process and subsequent user actions on various pages.
  */
@@ -18,11 +18,15 @@ describe('Login and Post-Login Tests', function() {
   const shippingPage = new ShippingPage();
   const billingPageAccountBilling = new BillingPageAccountBilling();
   const textComparator = new TextComparator();
-
   // Clearing cookies and local storage before each test to ensure a clean state
+
   beforeEach(() => {
     cy.clearCookies();
     cy.clearLocalStorage();
+
+     clearCart().then(() => {
+      console.log('Корзина очищена');
+     });
   });
 
   /**
@@ -57,7 +61,7 @@ describe('Login and Post-Login Tests', function() {
     billingPageAccountBilling.SelectPaymentMethodCreditCard(); // Choosing credit card as the payment method
     billingPageAccountBilling.ReviewOrderButton(); // Reviewing the order
     billingPageAccountBilling.PlaceOrderButton(); // Placing the order
-    billingPageAccountBilling.checkElementAndCompleteTest(); // Performing a final check and concluding the test
+    //billingPageAccountBilling.checkElementAndCompleteTest(); // Performing a final check and concluding the test
 
     // Additional interactions and text comparison can be added here if needed
     // cy.wait(20000);

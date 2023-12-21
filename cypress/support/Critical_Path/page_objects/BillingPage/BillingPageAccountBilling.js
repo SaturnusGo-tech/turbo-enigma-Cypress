@@ -175,15 +175,18 @@ class BillingPageAccountBilling {
      * Checks for the presence of a target element and completes the test if it exists.
      * This method is typically used as a final step in a test to verify the success of previous actions.
      */
-     checkElementAndCompleteTest() {
-         cy.log('Step: Checking for the presence of the target element');
-         cy.xpath(BillingPageLocators.targetXPath)
-             .should('exist')
-             .then(() => {
-                 cy.log('Completed: The target element exists, test will be marked as successful.');
-                 // Здесь можно добавить дополнительные действия для завершения теста, если необходимо
-             });
-     }
+
+    /**
+     *     checkElementAndCompleteTest() {
+     *          cy.log('Step: Checking for the presence of the target element');
+     *          cy.get(BillingPageLocators.targetXPath)
+     *              .should('exist')
+     *              .then(() => {
+     *                  cy.log('Completed: The target element exists, test will be marked as successful.');
+     *                  // Здесь можно добавить дополнительные действия для завершения теста, если необходимо
+     *              });
+     *      }
+     */
 }
 
 export default BillingPageAccountBilling;

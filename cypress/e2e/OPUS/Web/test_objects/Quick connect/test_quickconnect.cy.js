@@ -1,7 +1,7 @@
 import LoginPage from '../../../../../support/objects/LoginPage/actions/LoginPage'; // Укажите правильный путь к файлу LoginPage
 import TestData from "../../../../../fixtures/Secret_variables/Test_data";
 import QuickConnect from '../../../../../support/objects/Quick connect/actions/actions';
-import AuthLogin from '../../../../fixtures/navigation/AuthLogin';
+import AuthLogin from '../../../../../fixtures/navigation/AuthLogin';
 
 /**
  * Cypress test suite for validating catalog images after login.

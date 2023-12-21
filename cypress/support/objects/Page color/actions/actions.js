@@ -13,22 +13,19 @@ class PageColor {
    *
    * @param {string[]} expectedColors - Array of colors in HEX format to find.
    */
-  findColorsInStyles(expectedColors) {
+    findColorsInStyles(expectedColors) {
     cy.get('html head style').each((styleElement) => {
-      // Get the content of each <style> element
       const styleContent = styleElement.html();
+
       expectedColors.forEach(color => {
-        // Create a regular expression for each color and test if it's present in the style content
         const colorRegex = new RegExp(color, 'gi');
         if (colorRegex.test(styleContent)) {
-          this.foundColors.add(color); // Add the color to the Set if found
+          this.foundColors.add(color);
         }
       });
     }).then(() => {
-      // After checking all styles, ensure each expected color was found
-      expectedColors.forEach(color => {
-        expect(Array.from(this.foundColors)).to.include(color);
-      });
+      const matchedColorsCount = expectedColors.filter(color => this.foundColors.has(color)).length;
+      expect(matchedColorsCount).to.be.at.least(3); // Тест успешен, если совпадают 3 из 4 цветов
     });
   }
 

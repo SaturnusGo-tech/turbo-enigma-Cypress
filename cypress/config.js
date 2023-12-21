@@ -20,6 +20,7 @@ function getConfig(env) {
     const environments = JSON.parse(configFile);
 
     // Returning the specific environment's configuration
+
     return environments[env];
 }
 

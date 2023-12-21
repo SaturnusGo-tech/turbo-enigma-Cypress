@@ -1,5 +1,5 @@
 // Importing necessary page objects and test data
-import LoginPage from '../../../../../support/Critical_Path/page_objects/LoginPage/LoginPage';
+import LoginPage from '../../../../../support/objects/LoginPage/actions/LoginPage';
 import CatalogPage from '../../../../../support/objects/Catalog/actions/actions';
 import TestData from "../../../../../fixtures/Secret_variables/Test_data";
 

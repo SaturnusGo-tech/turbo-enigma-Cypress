@@ -2,7 +2,7 @@
 import LoginPage from '../../../../../support/objects/LoginPage/actions/LoginPage'; // Ensure the correct path to LoginPage file
 import TestData from "../../../../../fixtures/Secret_variables/Test_data";
 import QuickConnect from '../../../../../support/objects/Quick connect/actions/actions';
-import AuthLogin from '../../../../fixtures/navigation/AuthLogin';
+import AuthLogin from '../../../../../fixtures/navigation/AuthLogin';
 
 /**
  * Test suite focusing on validating the supplier quick connection feature after user login.

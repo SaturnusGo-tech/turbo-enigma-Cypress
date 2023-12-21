@@ -1,5 +1,5 @@
 // Importing necessary page objects and test data
-import LoginPage from '../../../../../support/Critical_Path/page_objects/LoginPage/LoginPage';
+import LoginPage from '../../../../../support/objects/LoginPage/actions/LoginPage';
 import TestData from "../../../../../fixtures/Secret_variables/Test_data";
 import SupplierConnect from '../../../../../support/objects/Suppliers connect catalog/actions/actions';
 
