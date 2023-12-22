@@ -38,3 +38,12 @@ Cypress.Commands.add('iframe', { prevSubject: 'element' }, ($iframe) => {
   const iframe = $iframe.contents();
   return cy.wrap(iframe);
 });
+
+Cypress.Commands.add('forceClickClearCart', () => {
+  cy.document().then(document => {
+    const clearCartButton = document.querySelector('.vc-button.vc-button--size--sm.vc-button--color--secondary.vc-button--outline--secondary.self-start');
+    if (clearCartButton) {
+      clearCartButton.click();
+    }
+  });
+});

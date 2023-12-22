@@ -39,7 +39,7 @@ export const ShippingPageLocators = {
      * XPath locator for opening the delivery address options.
      * Targets a button to reveal various delivery address choices.
      */
-    openDeliverAddress: '//*[@id="app"]/div/div[2]/div/div/div[2]/div[1]/div/div[2]/div/div/div[2]/div[1]/div[2]/div/div[2]/div',
+    openDeliverAddress: '//*[@id="app"]/div/div[2]/div/div/div[2]/div[1]/div/div[2]/div/div/div[2]/div[1]/div[2]/div/div[2]/div/span/span',
 
     /**
      * XPath locator for selecting a delivery method.
