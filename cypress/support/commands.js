@@ -47,3 +47,20 @@ Cypress.Commands.add('forceClickClearCart', () => {
     }
   });
 });
+
+
+Cypress.Commands.add('findElement', (selector, retries = 5, wait = 2000) => {
+  const find = (count) => {
+    return cy.get('body').then(body => {
+      if (body.find(selector).length > 0) {
+        return cy.get(selector); // Элемент найден
+      } else if (count > 0) {
+        cy.wait(wait); // Ожидание перед следующей попыткой
+        return find(count - 1);
+      } else {
+        throw new Error('Элемент не найден после нескольких попыток');
+      }
+    });
+  };
+  return find(retries);
+});

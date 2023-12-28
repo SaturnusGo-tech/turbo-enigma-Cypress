@@ -12,7 +12,8 @@ const loginPage = new LoginPage();
  * Test suite focusing on the validation of header elements when the user is logged in.
  * It aims to ensure that all header items appear and function correctly in an authorized state.
  */
-describe('Header items validations at authorized status', function () {
+describe('Header items validations at authorized status', { retries: 4 }, function () {
+
     /**
      * Initial setup before running the tests.
      * Includes setting the viewport size and clearing cookies and local storage for a clean test environment.

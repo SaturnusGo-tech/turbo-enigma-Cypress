@@ -46,13 +46,14 @@ export const BillingPageLocators = {
      * XPath locator for the 'Review Order' button.
      * It's typically located in the order summary section and used to navigate to the order review page.
      */
-    ReviewOrderButton: '//*[@id="order-summary"]/div[2]/a',
+     ReviewOrderButton: 'a[href="/checkout/review"]',
+
 
      /**
      * XPath locator for the 'Place Order' button.
      * This locator is used to finalize the order, located within the order summary section.
      */
-    PlaceOrderButton: '//*[@id="order-summary"]/div[2]/button',
+    PlaceOrderButton: '//*[@id="order-summary"]/div[2]/div/button',
 
       /**
      * XPath locator for navigating back to the cart.

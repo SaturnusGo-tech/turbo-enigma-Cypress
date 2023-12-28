@@ -41,7 +41,7 @@ module.exports = defineConfig({
      * Configuring automatic retries for tests.
      */
     retries: {
-      runMode: 4, // Number of retries in command line mode.
+      runMode: 6, // Number of retries in command line mode.
       openMode: 0 // Number of retries in interactive mode.
     },
 

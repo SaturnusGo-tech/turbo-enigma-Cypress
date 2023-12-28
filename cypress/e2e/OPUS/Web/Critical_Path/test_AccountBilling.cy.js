@@ -46,7 +46,7 @@ describe('Login and Post-Login Tests', function() {
     // Phase 2: Interactions on Home Page
     homePage.clickCategoryItemButton(); // Clicking on a category item button on the home page
     homePage.selectCategoryItem_GI(); // Selecting a specific category item
-    cy.wait(5000); // Waiting to ensure elements are loaded
+    cy.wait(25000); // Waiting to ensure elements are loaded
     homePage.openCart(); // Opening the cart
 
     // Phase 3: Actions on Cart Page

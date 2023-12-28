@@ -1,5 +1,6 @@
 import { CartPageLocators } from './CartPageLocators/CartPageLocators';
 
+
 class CartPage {
 
   /**
@@ -23,13 +24,13 @@ class CartPage {
    * Logs the navigation action to the checkout page after clicking the button.
    */
   openProceedCheckoutPage() {
-    cy.xpath(CartPageLocators.proceedCheckoutButton, { timeout: 10000 })
-      .should('be.visible')
-      .click()
-      .then(() => {
-        cy.log('Navigated to the Proceed to Checkout page');
-      });
-  }
+  cy.findElement(CartPageLocators.proceedCheckoutButton)
+    .should('be.visible')
+    .click()
+    .then(() => {
+      cy.log('Navigated to the Proceed to Checkout page');
+    });
+}
 }
 
 export default CartPage;

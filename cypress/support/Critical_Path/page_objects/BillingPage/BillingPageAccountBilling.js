@@ -104,14 +104,14 @@ class BillingPageAccountBilling {
      * Waits for 3.5 seconds after the click to ensure the next page loads.
      */
     ReviewOrderButton() {
-        cy.xpath(BillingPageLocators.ReviewOrderButton)
-            .click()
-            .then(($el) => {
-                cy.log('Clicked Review Order Button');
-                cy.log(`Element state: ${$el}`);
-            });
-        cy.wait(3500);
-    }
+    cy.get(BillingPageLocators.ReviewOrderButton)
+        .click()
+        .then(($el) => {
+            cy.log('Clicked Review Order Button');
+            cy.log(`Element state: ${$el}`);
+        });
+    cy.wait(3500); // Обратите внимание на замечания по использованию cy.wait()
+}
 
      /**
      * Finalizes the order by clicking the 'Place Order' button.

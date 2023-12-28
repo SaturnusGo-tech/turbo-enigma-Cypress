@@ -11,5 +11,5 @@ export const CartPageLocators = {
      * This selector finds an anchor tag (a) inside the second child div of the element with the ID 'order-summary'.
      * Generally used to navigate to the checkout process.
      */
-    proceedCheckoutButton: '//*[@id="order-summary"]/div[2]/a'
+    proceedCheckoutButton: 'a[href="/checkout"].vc-button.vc-button--size--md.vc-button--color--primary.vc-button--solid--primary.vc-button--full-width.mt-4'
 };
