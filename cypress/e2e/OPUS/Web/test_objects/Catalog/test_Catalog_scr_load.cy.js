@@ -10,14 +10,18 @@ describe('Catalog Images Validation after Login', function () {
      * Setup actions to be performed before each test.
      * This includes clearing cookies and local storage to ensure a clean testing environment.
      */
+
     beforeEach(() => {
+
         cy.clearCookies(); // Clearing all cookies
         cy.clearLocalStorage(); // Clearing local storage
     });
 
     // Initializing instances of Page Objects for reusable functionality
+
+    const baseUrl = Cypress.env('baseUrl');
     const loginPage = new LoginPage();
-    const catalog = new CatalogPage();
+    const catalog = new CatalogPage(baseUrl);
 
     /**
      * Main test case to perform login and validate the display and functionality of catalog images.

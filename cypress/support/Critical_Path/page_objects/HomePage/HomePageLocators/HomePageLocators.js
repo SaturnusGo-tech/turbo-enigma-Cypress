@@ -1,6 +1,6 @@
 export const HomePageLocators = {
 
-    imageUrl: "https://qa-opus.omniapartners.com/cms-content/assets/catalog/21057/d52d9a30489640dc8ea7b0ee2c651733/Getty Images_Education 1.png",
+        imageUrl: '//*[@id="app"]/div[3]/div[4]/div/div/div/div/div[1]/div[2]/div[7]/div[1]/div/img',
 
     /**
      * CSS Selector for the 'Education' category item button.

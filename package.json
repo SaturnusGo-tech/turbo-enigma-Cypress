@@ -7,12 +7,12 @@
     "test": "cypress run",
     "coverage": "nyc report --reporter=lcov && nyc report --reporter=text-summary",
     "open": "cypress open",
-   "test:qa": "cypress open --env envName=qa",
-  "test:uat": "cypress open --env envName=uat",
-  "test:demo": "cypress open --env envName=demo",
-    "testHeadless:qa": "cypress run --env envName=qa",
-  "testHeadless:uat": "cypress run --env envName=uat",
-  "testHeadless:demo": "cypress run --env envName=demo"
+   "test:qa": "cypress open --env envName=qa,baseUrl=https://qa-opus.omniapartners.com",
+    "test:uat": "cypress open --env envName=uat,baseUrl=https://uat-opus.omniapartners.com",
+    "test:demo": "cypress open --env envName=demo,baseUrl=https://omnia-demo-storefront.paas.govirto.com",
+    "testHeadless:qa": "cypress run --env envName=qa,baseUrl=https://qa-opus.omniapartners.com",
+    "testHeadless:uat": "cypress run --env envName=uat,baseUrl=https://uat-opus.omniapartners.com",
+    "testHeadless:demo": "cypress run --env envName=demo,baseUrl=https://omnia-demo-storefront.paas.govirto.com"
   },
   "keywords": [],
   "author": "",

@@ -10,7 +10,7 @@ export const BillingPageLocators = {
      * XPath locator for selecting the 'Credit Card' option as the payment method.
      * This locator finds a specific span element within a nested structure in the payment method section.
      */
-    SelectPaymentMethodCreditCard: '//*[@id="app"]/div/div[2]/div/div/div[2]/div[1]/div/div[2]/div/div/div[2]/div/div[2]/div[1]/div[2]/div[2]/ul/li[2]/span',
+    SelectPaymentMethodCreditCard: '//*[@id="app"]/div[3]/div[2]/div/div/div[2]/div[1]/div/div[2]/div/div/div[2]/div/div[2]/div[1]/div[2]/div[2]/ul/li/span',
 
      /**
      * XPath locator for opening the list of available billing addresses.
@@ -53,7 +53,7 @@ export const BillingPageLocators = {
      * XPath locator for the 'Place Order' button.
      * This locator is used to finalize the order, located within the order summary section.
      */
-    PlaceOrderButton: '//*[@id="order-summary"]/div[2]/div/button',
+    PlaceOrderButton: '//*[@id="order-summary"]/div[2]/button',
 
       /**
      * XPath locator for navigating back to the cart.

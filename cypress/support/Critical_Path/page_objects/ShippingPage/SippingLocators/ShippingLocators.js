@@ -45,7 +45,7 @@ export const ShippingPageLocators = {
      * XPath locator for selecting a delivery method.
      * Navigates to a specific list item within a dropdown or modal for delivery method selection.
      */
-    selectDeliveryMethod: '//*[@id="app"]/div/div[2]/div/div/div[2]/div[1]/div/div[2]/div/div/div[2]/div[1]/div[2]/div/div[2]/div[2]/ul/li',
+    selectDeliveryMethod: '//*[@id="app"]/div/div[2]/div/div/div[2]/div[1]/div/div[2]/div/div/div[2]/div[1]/div[2]/div/div[2]/div[2]/ul/li/span',
 
     /**
      * XPath locator for selecting a delivery method in a web-specific context.

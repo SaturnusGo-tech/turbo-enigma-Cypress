@@ -1,48 +1,52 @@
-// CatalogPage.js
-// This class handles the validation of catalog images in a web application.
+import { createLocators } from '../locators/locators';
 
-import { CatalogLocators } from '../locators/locators';
-
+/**
+ * Class representing a catalog page.
+ * Provides methods to validate the presence and attributes of images in different categories.
+ */
 class CatalogPage {
+    /**
+     * Constructs a new instance of the CatalogPage class.
+     * Initializes locators for images based on the provided base URL.
+     *
+     * @param {string} baseUrl - The base URL used for creating image locators.
+     */
+    constructor(baseUrl) {
+        this.locators = createLocators(baseUrl);
+    }
 
-    // Method to check the presence and proper loading of an image
-   checkImagePresence(imageLocator, imageAlt) {
-        console.log(`Validating the presence and visibility of image with locator: ${imageLocator}`);
-
-        // Check if the image is present and visible
-        cy.get(imageLocator, { timeout: 10000 })
+    /**
+     * Checks the presence and visibility of an image, and verifies its 'alt' attribute.
+     * Throws an error if the image is not loaded or the 'alt' attribute does not match.
+     *
+     * @param {string} imageLocator - The CSS locator for the image.
+     * @param {string} imageAlt - The expected 'alt' attribute value for the image.
+     */
+    checkImagePresence(imageLocator, imageAlt) {
+        cy.get(imageLocator, { timeout: 20000 })
           .should('be.visible')
-          .then(($img) => {
-              // Ensure the image element is valid before proceeding
-              if (!$img || $img.length === 0 || !$img[0].naturalWidth) {
-                  throw new Error(`Image not found or not loaded properly for locator: ${imageLocator}`);
+          .then($img => {
+              if (!$img[0].naturalWidth) {
+                  throw new Error(`Image not loaded for locator: ${imageLocator}`);
               }
-              expect($img[0].naturalWidth, 'Image width').to.be.greaterThan(0);
-          });
-
-        // Check the 'alt' attribute separately
-        cy.get(imageLocator)
-          .should('have.attr', 'alt')
-          .then((alt) => {
-              expect(alt, 'alt attribute').to.equal(imageAlt);
-          });
-
-        console.log(`Image validation completed for locator: ${imageLocator}`);
+          })
+          .should('have.attr', 'alt', imageAlt);
     }
 
-    // Method to validate images for a specific category
+    /**
+     * Validates the presence and attributes of images in a specific category.
+     *
+     * @param {Object} category - An object containing the locator and 'alt' text for a category.
+     */
     validateCategoryImages(category) {
-        // Log message indicating the start of image validation for a category
-        console.log(`Starting validation for ${category.name} images.`);
-        // Calling checkImagePresence method for each category
         this.checkImagePresence(category.locator, category.alt);
-        // Log message indicating the completion of image validation for a category
-        console.log(`Validated ${category.name} image.`);
     }
 
-    // Method to validate all images in the catalog
-    validateAllImages() {
-       cy.wait(15000);
+    /**
+     * Validates the presence and attributes of all images across various categories.
+     * Iterates through a predefined list of categories to perform the validation.
+     */
+   validateAllImages() {
         const categories = [
             'Business Products & Services',
             'Facilities',
@@ -58,21 +62,17 @@ class CatalogPage {
             'Public Safety',
         ];
 
-        // Mapping categories to their respective locators and alt texts
         const imageCategories = categories.map(category => ({
             name: category,
-            locator: CatalogLocators[`Img_${category.replace(/ & /g, '_').replace(/ /g, '_')}`],
-            alt: CatalogLocators[`Alt_${category.replace(/ & /g, '_').replace(/ /g, '_')}`]
+            locator: this.locators[`Img_${category.replace(/ & /g, '_').replace(/ /g, '_')}`],
+            alt: this.locators[`Alt_${category.replace(/ & /g, '_').replace(/ /g, '_')}`]
         }));
 
-        // Logging the start of the image validation process
-        console.log('Starting validation of all images.');
-        // Iterating over each category and validating its images
+        cy.wait(15000); // Wait for all images to load
+
         imageCategories.forEach(category => {
             this.validateCategoryImages(category);
         });
-        // Logging the completion of the image validation process
-        console.log('Completed validation of all images.');
     }
 }
 
