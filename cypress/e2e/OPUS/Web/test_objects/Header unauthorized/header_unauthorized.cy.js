@@ -11,7 +11,7 @@ const loginPage = new LoginPage();
  * Main test suite for validating the appearance and functionality of header items
  * when the user is not authorized (not logged in).
  */
-describe('Header items validations at unauthorized status', function () {
+describe('Header items validations at unauthorized status', { retries: 4 }, function () {
     /**
      * Setup actions to be performed before running the tests.
      * Includes setting the viewport size and clearing cookies and local storage

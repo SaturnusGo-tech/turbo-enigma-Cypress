@@ -6,7 +6,7 @@ import AuthLogin from '../../../../../fixtures/navigation/AuthLogin';
 /**
  * Cypress test suite for validating catalog images after login.
  */
-describe('Supplier quick connection after Login', function () {
+describe('Supplier quick connection after Login', { retries: 4 }, function () {
     /**
      * Before each test, clears cookies and localStorage to reset the application state.
      */

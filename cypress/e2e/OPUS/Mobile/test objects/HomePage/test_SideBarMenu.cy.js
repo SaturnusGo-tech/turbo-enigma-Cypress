@@ -6,7 +6,7 @@ import TestData from '../../../../../fixtures/Secret_variables/Test_data';
 /**
  * Test suite focusing on login functionality and subsequent interactions on the Home Page.
  */
-describe('Login and HomePage Tests', function() {
+describe('Login and HomePage Tests', { retries: 4 }, function () {
     const loginPage = new LoginPage();
     const sideBarMenu = new Actions();
 

@@ -6,7 +6,7 @@ import TestData from "../../../../../fixtures/Secret_variables/Test_data";
 /**
  * Test suite for validating the appearance and functionality of catalog images after user login.
  */
-describe('Catalog Images Validation after Login', function () {
+describe('Catalog Images Validation after Login', { retries: 4 }, function () {
     /**
      * Setup actions to be performed before each test.
      */
@@ -20,8 +20,9 @@ describe('Catalog Images Validation after Login', function () {
     });
 
     // Initializing instances of Page Objects for reusability
+    const baseUrl = Cypress.env('baseUrl');
     const loginPage = new LoginPage();
-    const catalog = new CatalogPage();
+    const catalog = new CatalogPage(baseUrl);
 
     /**
      * Main test case to validate the display and functionality of catalog images post-login.

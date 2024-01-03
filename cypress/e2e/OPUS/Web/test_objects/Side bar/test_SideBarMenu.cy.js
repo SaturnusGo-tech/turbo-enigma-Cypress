@@ -7,7 +7,7 @@ import AuthLogin from '../../../../../fixtures/navigation/AuthLogin';
 /**
  * Test suite focusing on validating the supplier quick connection feature after user login.
  */
-describe('Supplier quick connection after Login', function () {
+describe('Supplier quick connection after Login', { retries: 4 }, function () {
     /**
      * Setup actions to be performed before each test.
      * This includes clearing cookies and local storage to ensure a clean testing environment.

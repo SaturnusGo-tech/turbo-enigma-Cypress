@@ -1,4 +1,4 @@
-import { createLocators } from '../locators/locators';
+import createLocators from '../locators/locators';
 
 /**
  * Class representing a catalog page.

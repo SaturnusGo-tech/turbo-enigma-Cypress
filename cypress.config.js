@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 module.exports = defineConfig({
-  projectId: "92ipf",
+  projectId: "92iupf",
 
   e2e: {
     /**

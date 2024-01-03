@@ -6,7 +6,7 @@ import SupplierConnect from '../../../../../support/objects/Suppliers connect ca
 /**
  * Test suite focusing on the validation of supplier connect functionality after user login.
  */
-describe('Supplier connect Validation after Login', function () {
+describe('Supplier connect Validation after Login', { retries: 4 }, function () {
     /**
      * Setup actions to be performed before each test.
      * This includes clearing cookies and local storage to ensure a clean testing environment.

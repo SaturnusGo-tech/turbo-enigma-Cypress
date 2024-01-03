@@ -5,7 +5,7 @@ const Locators = {
 };
 
 const DisabledHeaderItems = [
-    { locator: '//*[@id="app"]/div/div[2]/nav/div[2]/div[1]/div/div[1]/div[1]/button', type: 'xpath' },
+    { locator: '//*[@id="app"]/div/div[2]/nav/div[2]/div[1]/div/div[1]/div[1]/button', type: 'xpath' }, //Risky selector
     { locator: '/catalog', type: 'href' },
     { locator: '/company/info', type: 'href' },
     { locator: '/account/orders', type: 'href' },

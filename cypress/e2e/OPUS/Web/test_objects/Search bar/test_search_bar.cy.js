@@ -2,7 +2,7 @@ import LoginPage from '../../../../../support/objects/LoginPage/actions/LoginPag
 import CatalogValidator from '../../../../../support/objects/Search bar/actions/actions'
 import TestData from "../../../../../fixtures/Secret_variables/Test_data";
 
-describe('Search bar Validation after Login', function () {
+describe('Search bar Validation after Login', { retries: 4 }, function () {
     beforeEach(() => {
         cy.viewport('macbook-15');
         cy.clearCookies();

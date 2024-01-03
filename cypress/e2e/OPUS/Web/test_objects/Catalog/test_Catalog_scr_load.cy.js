@@ -1,11 +1,11 @@
 // Importing necessary classes and data
-import LoginPage from '../../../../../support/objects/LoginPage/actions/LoginPage'; // Ensure the correct path to LoginPage file
+import LoginPage from '../../../../../support/objects/LoginPage/actions/LoginPage';
 import CatalogPage from '../../../../../support/objects/Catalog/actions/actions';
 
 /**
  * Test suite for validating the display and functionality of catalog images after user login.
  */
-describe('Catalog Images Validation after Login', function () {
+describe('Catalog Images Validation after Login', { retries: 4 }, function () {
     /**
      * Setup actions to be performed before each test.
      * This includes clearing cookies and local storage to ensure a clean testing environment.

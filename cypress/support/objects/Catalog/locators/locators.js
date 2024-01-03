@@ -17,12 +17,16 @@ const InvertURL = (baseUrl, path) => {
  * In the case of the demo environment, '-storefront' is removed from the URL.
  * This function generates locators with corrected URLs for each environment.
  *
+ *
  * @param {string} baseUrl - The base URL, which may be adjusted for the demo environment.
  * @return {Object} An object containing the locators for different images and categories.
  */
-export const DynamicID = (baseUrl) => {
+export const DynamicID = (baseUrl = '') => {
+
     // Adjusts baseUrl for the demo environment by removing '-storefront'
+    console.log('baseUrl:', baseUrl);
     const isDemoEnvironment = baseUrl.includes('omnia-demo-storefront');
+
     const correctedBaseUrl = isDemoEnvironment ? baseUrl.replace('-storefront', '') : baseUrl;
 
     // Defines locators for different images and categories

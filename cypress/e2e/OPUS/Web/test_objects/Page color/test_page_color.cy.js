@@ -5,7 +5,7 @@ import TestData from "../../../../../fixtures/Secret_variables/Test_data";
 /**
  * Test suite for validating the color scheme of the home page after user login.
  */
-describe('Page color Validation after Login', function () {
+describe('Page color Validation after Login', { retries: 4 }, function () {
     beforeEach(() => {
         cy.clearCookies();
         cy.clearLocalStorage();

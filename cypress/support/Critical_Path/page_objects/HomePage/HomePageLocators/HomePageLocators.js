@@ -1,6 +1,6 @@
 export const HomePageLocators = {
 
-        imageUrl: '//*[@id="app"]/div[3]/div[4]/div/div/div/div/div[1]/div[2]/div[7]/div[1]/div/img',
+        imageUrl: "//img[contains(@alt, 'Education')][1]",
 
     /**
      * CSS Selector for the 'Education' category item button.

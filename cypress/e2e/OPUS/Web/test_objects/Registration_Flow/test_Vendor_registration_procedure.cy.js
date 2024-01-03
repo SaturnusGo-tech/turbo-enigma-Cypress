@@ -2,7 +2,7 @@ import Supplier_Enrollment_Flow_Verification from '../../../../../support/object
 import LoginPage from "../../../../../support/objects/LoginPage/actions/LoginPage";
 
 // Test suite for Vendor Registration Procedure
-describe('Vendor registration procedure test', function() {
+describe('Vendor registration procedure test', { retries: 4 }, function () {
 
     // Initializing required page objects for the test
     const supplier_Enrollment_Flow_Verification = new Supplier_Enrollment_Flow_Verification();

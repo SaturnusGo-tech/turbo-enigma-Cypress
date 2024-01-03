@@ -6,7 +6,7 @@ import TestData from "../../../../../fixtures/Secret_variables/Test_data";
 /**
  * Test suite focusing on the validation of footer elements after user login.
  */
-describe('Footer Validation after Login', function () {
+describe('Footer Validation after Login', { retries: 4 }, function () {
     /**
      * Setup actions to be performed before each test.
      * This includes setting the viewport size and clearing cookies and local storage

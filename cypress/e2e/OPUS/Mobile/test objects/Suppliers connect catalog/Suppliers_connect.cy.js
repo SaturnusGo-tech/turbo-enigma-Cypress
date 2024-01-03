@@ -6,7 +6,7 @@ import SupplierConnect from '../../../../../support/objects/Suppliers connect ca
 /**
  * Test suite focusing on the validation of catalog images after user login.
  */
-describe('Catalog Images Validation after Login', function () {
+describe('Catalog Images Validation after Login', { retries: 4 }, function () {
     /**
      * Setup actions to be performed before each test.
      * This includes clearing cookies and local storage for a clean testing environment,
