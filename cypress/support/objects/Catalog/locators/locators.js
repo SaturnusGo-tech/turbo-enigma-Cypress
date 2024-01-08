@@ -18,6 +18,7 @@ const InvertURL = (baseUrl, path) => {
  * This function generates locators with corrected URLs for each environment.
  *
  *
+ *
  * @param {string} baseUrl - The base URL, which may be adjusted for the demo environment.
  * @return {Object} An object containing the locators for different images and categories.
  */

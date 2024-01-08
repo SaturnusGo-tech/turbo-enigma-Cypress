@@ -6,7 +6,6 @@ import ShippingPage from '../../../../support/Critical_Path/page_objects/Shippin
 import BillingPageAccountBilling from '../../../../support/Critical_Path/page_objects/BillingPage/BillingPageAccountBilling';
 import TextComparator from '../../../../support/objects/orders/actions/actions';
 import TestData from '../../../../fixtures/Secret_variables/Test_data';
-import { clearCart } from "../../../../plugins/clearCart/clearCart";
 import { login } from "../../../../plugins/clearCart/clearCart"
 import { forceClickClearCart } from "../../../../plugins/LocalStorage/cleaner";
 /**
@@ -38,10 +37,6 @@ describe('Login and Post-Login Tests', function() {
     loginPage.login(); // Performing login actions
     cy.url().should('include', '/home'); // Verifying successful login by checking the URL
 
-      clearCart().then(response => {
-          cy.log('Status code:', response.status);
-          cy.log('Response status:', response.body);
-      });
 
     // Phase 2: Interactions on Home Page
     homePage.clickCategoryItemButton(); // Clicking on a category item button on the home page
