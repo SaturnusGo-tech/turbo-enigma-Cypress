@@ -4,32 +4,45 @@ import ByCategory from "../../../../support/Browse catalog/by category/actions/a
 import ReorderAll from "./../../../../support/Browse catalog/reorder all/actions/actions";
 
 /**
- * Test suite focusing on the login process and subsequent user actions on various pages.
+ * Test suite for login functionality and post-login navigational flow.
+ * It includes steps like reordering items, managing the cart, and logging out.
  */
-describe('Login and Post-Login Tests', function() {
-    // Initializing instances of Page Objects for ease of use
+describe('User Login and Workflow Tests', function() {
+    // Initialize instances of Page Objects for easy reference
     const loginPage = new LoginPage();
-    const reorder = new ReorderAll();
-    // Clearing cookies and local storage before each test to ensure a clean state
+    const byCategory = new ByCategory();
+    const reorderAll = new ReorderAll();
 
+    // Setting up the browser's viewport and cleaning state before each test run
     beforeEach(() => {
-
         cy.viewport('macbook-15'); // Simulating a desktop environment
-        cy.clearCookies();
-        cy.clearLocalStorage();
+        cy.clearCookies();        // Ensuring no cookies are present at the start
+        cy.clearLocalStorage();   // Clearing local storage for a clean slate
     });
 
     /**
-     * Main test case to perform login and then execute a series of actions across different pages.
-     * This includes navigating through home, cart, shipping, and billing pages and interacting with various elements.
+     * A comprehensive test that covers the user's journey from logging in,
+     * browsing categories, reordering items, reviewing and clearing the cart,
+     * and finally logging out.
      */
-    it('Should login and then perform actions', function () {
-        // Phase 1: Login
-        loginPage.visit(); // Navigating to the login page
-        loginPage.login(); // Performing login actions
-        cy.url().should('include', '/home'); // Verifying successful login by checking the URL
+    it('should log in and perform various actions through the user workflow', function () {
+        // Phase 1: Logging into the application
+        loginPage.visit();  // Navigate to the login page
+        loginPage.login();  // Execute login action
+        cy.url().should('include', '/home');  // Confirm navigation to the home page
 
-        ReorderAll.clickOrdersButton();
-        ReorderAll.clickRandomOrderLinkInItem();
+        // Phase 2: User workflow after successful login
+        // View and select past orders
+        ReorderAll.clickOrdersButton();         // Click to view orders
+        ReorderAll.clickRandomLink();           // Open a random past order
+        ReorderAll.clickReorderAndAccept();     // Initiate and confirm reorder
+
+        // Manage cart contents
+        ReorderAll.clickOnCartButtonAndCheckUrl();  // Navigate to and verify cart page
+        ReorderAll.clickButtonBelowClearCart();     // Begin the process to clear cart
+        ReorderAll.clickToAcceptClearCart();        // Confirm and clear the cart
+
+        // Phase 3: Logging out of the application
+        ReorderAll.clickAccountAndLogout();     // Access account options and log out
     });
 });
