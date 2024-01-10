@@ -17,20 +17,20 @@ class CatalogPage {
 
     /**
      * Checks the presence and visibility of an image, and verifies its 'alt' attribute.
-     * Throws an error if the image is not loaded or the 'alt' attribute does not match.
+     * Utilizes explicit waits instead of hard-coded wait times.
      *
      * @param {string} imageLocator - The CSS locator for the image.
      * @param {string} imageAlt - The expected 'alt' attribute value for the image.
      */
     checkImagePresence(imageLocator, imageAlt) {
-        cy.get(imageLocator, { timeout: 20000 })
+        cy.get(imageLocator, { timeout: 20000 }) // Explicit wait up to 20 seconds
           .should('be.visible')
-          .then($img => {
+          .and($img => {
               if (!$img[0].naturalWidth) {
                   throw new Error(`Image not loaded for locator: ${imageLocator}`);
               }
           })
-          .should('have.attr', 'alt', imageAlt);
+          .and('have.attr', 'alt', imageAlt);
     }
 
     /**
@@ -45,9 +45,10 @@ class CatalogPage {
     /**
      * Validates the presence and attributes of all images across various categories.
      * Iterates through a predefined list of categories to perform the validation.
+     * Avoids hard-coded wait times for image loading.
      */
-   validateAllImages() {
-        const categories = [
+    validateAllImages() {
+       const categories = [
             'Business Products & Services',
             'Facilities',
             'Information Technology',

@@ -27,6 +27,7 @@ describe('Login and Post-Login Tests', function() {
 
   });
 
+
   /**
    * Main test case to perform login and then execute a series of actions across different pages.
    * This includes navigating through home, cart, shipping, and billing pages and interacting with various elements.
