@@ -13,3 +13,5 @@ dist/
 .cache/
 
 cypress/reports/
+
+downloaded_svgs/

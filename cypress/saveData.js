@@ -56,7 +56,7 @@ const downloadImagesFromList = async (file) => {
   // Looping through each URL and downloading the image
   for (const url of urls) {
     if (url) {
-      const filename = url.split('/').pop().split('?')[0]; // Removing URL parameters
+      const filename = url.split('/').pop().split('?')[0];
       const filepath = path.resolve(imagesDirPath, filename);
       try {
         await downloadImage(url, filepath);
