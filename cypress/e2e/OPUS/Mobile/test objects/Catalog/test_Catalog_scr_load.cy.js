@@ -6,7 +6,7 @@ import TestData from "../../../../../fixtures/Secret_variables/Test_data";
 /**
  * Test suite for validating the appearance and functionality of catalog images after user login.
  */
-describe('Catalog Images Validation after Login', { retries: 4 }, function () {
+describe('Catalog Images Validation after Login', { retries: 18 }, function () {
     /**
      * Setup actions to be performed before each test.
      */

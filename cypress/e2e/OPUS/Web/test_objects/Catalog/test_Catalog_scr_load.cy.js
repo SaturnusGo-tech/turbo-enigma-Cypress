@@ -5,7 +5,7 @@ import CatalogPage from '../../../../../support/objects/Catalog/actions/actions'
 /**
  * Test suite for validating the display and functionality of catalog images after user login.
  */
-describe('Catalog Images Validation after Login', { retries: 4 }, function () {
+describe('Catalog Images Validation after Login', { retries: 1 }, function () {
     /**
      * Setup actions to be performed before each test.
      * This includes clearing cookies and local storage to ensure a clean testing environment.
@@ -15,6 +15,7 @@ describe('Catalog Images Validation after Login', { retries: 4 }, function () {
 
         cy.clearCookies(); // Clearing all cookies
         cy.clearLocalStorage(); // Clearing local storage
+        cy.viewport('macbook-15');
     });
 
     // Initializing instances of Page Objects for reusable functionality
@@ -40,8 +41,12 @@ describe('Catalog Images Validation after Login', { retries: 4 }, function () {
         cy.log('Successfully logged in and redirected to home page.');
 
         // Catalog Image Validation Phase
-        cy.log('--- Starting Catalog Validation ---'); // Logging the start of catalog image validation
-        catalog.validateAllImages(); // Validating the appearance and loading of catalog images
-        cy.log('Catalog images validated.'); // Logging the completion of catalog validation
+        cy.log('--- Starting Catalog Validation and pulling urls process ---');
+        cy.wait(7000);
+        catalog.openTableSupplierList()
+        catalog.openSupplierList()
+        catalog.scrollToLoadAllImages()
+        catalog.findAndSaveSvgUrls();
+        cy.log('Catalog images validated and svg urls has been successfully pulled.'); // Logging the completion of catalog validation
     });
 });

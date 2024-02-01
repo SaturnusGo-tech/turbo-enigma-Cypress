@@ -7,12 +7,15 @@
     "test": "cypress run",
     "coverage": "nyc report --reporter=lcov && nyc report --reporter=text-summary",
     "open": "cypress open",
-   "test:qa": "cypress open --env envName=qa,baseUrl=https://qa-opus.omniapartners.com",
+    "test:qa": "cypress open --env envName=qa,baseUrl=https://qa-opus.omniapartners.com",
     "test:uat": "cypress open --env envName=uat,baseUrl=https://uat-opus.omniapartners.com",
-    "test:demo": "cypress open --env envName=demo,baseUrl=https://omnia-demo-storefront.paas.govirto.com",
-    "testHeadless:qa": "cypress run --env envName=qa,baseUrl=https://qa-opus.omniapartners.com",
-    "testHeadless:uat": "cypress run --env envName=uat,baseUrl=https://uat-opus.omniapartners.com",
-    "testHeadless:demo": "cypress run --env envName=demo,baseUrl=https://omnia-demo-storefront.paas.govirto.com"
+    "test:demo": "cypress open --env envName=demo,baseUrl=https://demo-opus.omniapartners.com/",
+    "testHeadless:qa": "cypress run --record --key e6b630f3-c425-4a1d-9210-3bdf76939de1 --env envName=qa,baseUrl=https://qa-opus.omniapartners.com",
+
+    "testHeadlessNokey:qa": "cypress run --env envName=qa,baseUrl=https://qa-opus.omniapartners.com",
+
+    "testHeadless:uat": "cypress run --record --key e6b630f3-c425-4a1d-9210-3bdf76939de1 --env envName=uat,baseUrl=https://uat-opus.omniapartners.com",
+    "testHeadless:demo": "cypress run --record --key e6b630f3-c425-4a1d-9210-3bdf76939de1 --env envName=demo,baseUrl=https://demo-opus.omniapartners.com/"
   },
   "keywords": [],
   "author": "",
@@ -26,6 +29,8 @@
     "cypress": "^13.6.1",
     "cypress-xpath": "^2.0.1",
     "istanbul-lib-coverage": "^3.2.1",
+    "mochawesome": "^7.1.3",
+    "mochawesome-report-generator": "^6.2.0",
     "nyc": "^15.1.0",
     "typescript": "^5.2.2"
   },
